@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
+import { FaSnowflake } from "react-icons/fa";
 import {
   FaReact,
   FaNodeJs,
@@ -11,6 +12,7 @@ import {
   FaHtml5,
   FaCss3Alt,
   FaPhp,
+  FaCoffee,
 } from "react-icons/fa";
 import {
   SiNextdotjs,
@@ -18,27 +20,70 @@ import {
   SiMongodb,
   SiMysql,
   SiTailwindcss,
+  SiTypescript,
+  SiRedux,
+  SiSass,
+  SiStyledcomponents,
+  SiSupabase,
+  SiGit,
+  SiPostman,
+  SiPython,
+  SiCplusplus,
+  SiC,
 } from "react-icons/si";
 
 const Skills = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
-  const skills = [
-    { Icon: FaReact, name: "React", color: "text-blue-400", level: 90 },
-    { Icon: SiNextdotjs, name: "Next.js", color: "text-foreground", level: 85 },
-    { Icon: FaNodeJs, name: "Node.js", color: "text-green", level: 88 },
-    { Icon: SiExpress, name: "Express", color: "text-foreground", level: 85 },
-    { Icon: SiMongodb, name: "MongoDB", color: "text-green", level: 80 },
-    { Icon: SiMysql, name: "MySQL", color: "text-blue-500", level: 82 },
-    { Icon: FaPhp, name: "PHP", color: "text-purple", level: 75 },
-    { Icon: FaJs, name: "JavaScript", color: "text-yellow-400", level: 92 },
-    { Icon: FaGithub, name: "GitHub", color: "text-foreground", level: 88 },
-    { Icon: FaFigma, name: "Figma", color: "text-purple", level: 78 },
-    { Icon: FaBootstrap, name: "Bootstrap", color: "text-purple", level: 85 },
-    { Icon: SiTailwindcss, name: "Tailwind", color: "text-electric", level: 90 },
-    { Icon: FaHtml5, name: "HTML5", color: "text-orange-500", level: 95 },
-    { Icon: FaCss3Alt, name: "CSS3", color: "text-blue-500", level: 92 },
+  const skillCategories = [
+    {
+      title: "PROGRAMMING LANGUAGES",
+      skills: [
+        { Icon: SiC, name: "C", color: "text-gray-500", level: 70 },
+        { Icon: SiCplusplus, name: "C++", color: "text-blue-500", level: 75 },
+        { Icon: FaCoffee, name: "Java", color: "text-orange-500", level: 80 },
+        { Icon: SiPython, name: "Python", color: "text-green-500", level: 85 },
+        { Icon: FaJs, name: "JavaScript", color: "text-yellow-400", level: 92 },
+        { Icon: SiTypescript, name: "TypeScript", color: "text-blue-600", level: 88 },
+      ]
+    },
+    {
+      title: "FRONTEND",
+      skills: [
+        { Icon: FaHtml5, name: "HTML", color: "text-orange-500", level: 95 },
+        { Icon: FaCss3Alt, name: "CSS", color: "text-blue-500", level: 92 },
+        { Icon: FaReact, name: "React", color: "text-blue-400", level: 90 },
+        { Icon: SiTailwindcss, name: "Tailwind", color: "text-electric", level: 90 },
+        { Icon: FaBootstrap, name: "Bootstrap", color: "text-purple-500", level: 85 },
+        // { Icon: SiRedux, name: "Redux", color: "text-purple-500", level: 85 },
+      ]
+    },
+    {
+      title: "BACKEND",
+      skills: [
+        { Icon: FaPhp, name: "PHP", color: "text-purple-500", level: 85 },
+        { Icon: FaNodeJs, name: "Node.js", color: "text-green-500", level: 88 },
+        { Icon: SiExpress, name: "Express", color: "text-foreground", level: 85 },
+      ]
+    },
+    {
+      title: "DATABASES",
+      skills: [
+        { Icon: SiMysql, name: "MySQL", color: "text-blue-500", level: 85 },
+        { Icon: SiMongodb, name: "MongoDB", color: "text-green-500", level: 80 },
+        { Icon: SiSupabase, name: "Supabase", color: "text-green-500", level: 85 },
+      ]
+    },
+    {
+      title: "TOOLS",
+      skills: [
+        { Icon: SiGit, name: "Git", color: "text-red-500", level: 88 },
+        { Icon: FaGithub, name: "GitHub", color: "text-foreground", level: 88 },
+        { Icon: SiPostman, name: "Postman", color: "text-orange-500", level: 85 },
+        { Icon: FaGithub, name: "VS Code", color: "text-blue-500", level: 90 },
+      ]
+    }
   ];
 
   return (
@@ -58,88 +103,97 @@ const Skills = () => {
           </p>
         </motion.div>
 
-        {/* Skills Grid */}
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6">
-          {skills.map((skill, index) => (
-            <motion.div
-              key={skill.name}
-              className="group relative"
-              initial={{ opacity: 0, scale: 0.8, y: 50 }}
-              animate={isInView ? { opacity: 1, scale: 1, y: 0 } : {}}
-              transition={{ 
-                duration: 0.8, 
-                delay: index * 0.1 + 0.5,
-                type: "spring",
-                bounce: 0.4
-              }}
-              whileHover={{ 
-                scale: 1.05,
-                rotateY: 10,
-                z: 50
-              }}
-            >
-              <div className="bg-card rounded-2xl p-6 tech-border hover:shadow-glow transition-all duration-300 h-full">
-                <div className="flex flex-col items-center text-center space-y-4">
-                  {/* Skill Icon */}
-                  <motion.div
-                    layoutId={`tech-icon-${skill.name}`}
-                    className={`text-4xl ${skill.color} group-hover:animate-pulse w-12 h-12 rounded-lg bg-card/80 backdrop-blur-sm border border-primary/30 flex items-center justify-center shadow-glow hover:shadow-electric transition-all duration-300`}
-                    whileHover={{ scale: 1.2, rotate: 15 }}
-                    transition={{ type: "spring", bounce: 0.6, layout: { duration: 0.8 } }}
-                  >
-                    <skill.Icon className="w-6 h-6" />
-                  </motion.div>
-                  
-                  {/* Skill Name */}
-                  <h3 className="font-semibold text-lg text-foreground group-hover:text-primary transition-colors">
-                    {skill.name}
-                  </h3>
-                  
-                  {/* Skill Level Bar */}
-                  <div className="w-full">
-                    <div className="flex justify-between items-center mb-1">
-                      <span className="text-xs text-muted-foreground">Proficiency</span>
-                      <span className="text-xs text-primary font-medium">{skill.level}%</span>
-                    </div>
-                    <div className="w-full bg-muted rounded-full h-2">
-                      <motion.div
-                        className="bg-gradient-primary h-2 rounded-full"
-                        initial={{ width: 0 }}
-                        animate={isInView ? { width: `${skill.level}%` } : {}}
-                        transition={{ duration: 1, delay: index * 0.1 + 0.5 }}
-                      />
-                    </div>
-                  </div>
-                </div>
+        {/* MY STACK Header */}
+        <motion.div
+          className="flex items-center gap-3 mb-12"
+          initial={{ opacity: 0, x: -20 }}
+          animate={isInView ? { opacity: 1, x: 0 } : {}}
+          transition={{ duration: 0.6, delay: 0.2 }}
+        >
+          <motion.div
+            animate={{ rotate: 360 }}
+            transition={{
+              duration: 3,
+              repeat: Infinity,
+              ease: "linear"
+            }}
+          >
+            <FaSnowflake className="text-electric text-xl" />
+          </motion.div>
+          <h3 className="text-2xl font-bold text-foreground">MY STACK</h3>
+        </motion.div>
 
-                {/* Hover Effect Glow */}
-                <motion.div
-                  className="absolute inset-0 bg-gradient-primary opacity-0 rounded-2xl blur-xl group-hover:opacity-20 transition-opacity duration-300"
-                  whileHover={{ scale: 1.1 }}
-                />
-              </div>
+        {/* Skills Categories - Layout matching the image */}
+        <div className="space-y-12">
+          {skillCategories.map((category, categoryIndex) => (
+            <motion.div
+              key={category.title}
+              className="flex flex-col lg:flex-row lg:items-start gap-16"
+              initial={{ opacity: 0, y: 30 }}
+              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.8, delay: categoryIndex * 0.2 }}
+            >
+              {/* Category Title - Left side */}
+              <motion.h3
+                className="text-3xl font-bold text-muted-foreground/80 lg:w-48 lg:flex-shrink-0"
+                layoutId={`category-title-${category.title}`}
+              >
+                {category.title}
+              </motion.h3>
+
+              {/* Skills Icons - Right side, arranged horizontally */}
+              <motion.div
+                className="flex flex-wrap gap-6 items-center"
+                layoutId={`skills-row-${category.title}`}
+                transition={{
+                  type: "spring",
+                  bounce: 0.15,
+                  duration: 1.2,
+                  ease: [0.25, 0.46, 0.45, 0.94]
+                }}
+              >
+                {category.skills.map((skill, index) => (
+                  <motion.div
+                    key={skill.name}
+                    className="group relative flex flex-col items-center"
+                    layoutId={`tech-icon-${skill.name}`}
+                    initial={{ opacity: 0, scale: 0.8, y: 20 }}
+                    animate={isInView ? { opacity: 1, scale: 1, y: 0 } : {}}
+                    transition={{
+                      duration: 0.8,
+                      delay: (categoryIndex * 0.2) + (index * 0.05) + 0.3,
+                      type: "spring",
+                      bounce: 0.4,
+                      layout: {
+                        duration: 1.2,
+                        ease: [0.25, 0.46, 0.45, 0.94]
+                      }
+                    }}
+                    whileHover={{
+                      scale: 1.1,
+                      z: 50
+                    }}
+                  >
+                    {/* Skill Icon - This will animate from orbit position */}
+                    <motion.div
+                      className={`text-4xl ${skill.color} group-hover:animate-pulse w-16 h-16 rounded-xl bg-card/80 backdrop-blur-sm border border-primary/30 flex items-center justify-center shadow-glow hover:shadow-electric transition-all duration-300`}
+                      whileHover={{ scale: 1.2, rotate: 15 }}
+                      transition={{ type: "spring", bounce: 0.6 }}
+                    >
+                      <skill.Icon className="w-8 h-8" />
+                    </motion.div>
+
+                    {/* Skill Name */}
+                    <h4 className="font-medium text-sm text-foreground mt-2 text-center group-hover:text-primary transition-colors">
+                      {skill.name}
+                    </h4>
+                  </motion.div>
+                ))}
+              </motion.div>
             </motion.div>
           ))}
         </div>
 
-        {/* Skills Summary */}
-        <motion.div
-          className="mt-16 text-center"
-          initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6, delay: 1 }}
-        >
-          <div className="bg-card rounded-2xl p-8 tech-border max-w-4xl mx-auto">
-            <h3 className="text-2xl font-semibold mb-4 text-gradient-electric">
-              What I Bring to the Table
-            </h3>
-            <p className="text-lg text-muted-foreground leading-relaxed">
-              A versatile skill set spanning frontend and backend development, with a passion for 
-              creating seamless user experiences. I stay current with the latest technologies and 
-              best practices to deliver high-quality, maintainable code.
-            </p>
-          </div>
-        </motion.div>
       </div>
     </section>
   );

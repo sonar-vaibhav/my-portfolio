@@ -9,47 +9,21 @@ const Experience = () => {
 
   const experiences = [
     {
-      title: "Senior Full Stack Developer",
-      company: "TechCorp Solutions",
-      location: "Mumbai, India",
-      period: "2023 - Present",
-      type: "Full-time",
-      description: "Leading development of scalable web applications using React, Node.js, and cloud technologies. Mentoring junior developers and implementing best practices.",
+      title: "Web Development Intern",
+      company: "Sumago Infotech Pvt. Ltd.",
+      location: "Nashik, India",
+      period: "June 2024 - July 2024",
+      type: "Remote",
+      // description: "Leading development of scalable web applications using React, Node.js, and cloud technologies. Mentoring junior developers and implementing best practices.",
       achievements: [
-        "Increased application performance by 40% through code optimization",
-        "Led a team of 4 developers on a major client project",
-        "Implemented CI/CD pipeline reducing deployment time by 60%"
+        "Acquired hands-on experience in front-end & back-end development using HTML, CSS, JavaScript, PHP, MySQL, and React.js.",
+        "Built interactive and responsive UI components using HTML, CSS, JavaScript.",
+        "Optimized website rendering time by 30%, enhancing performance and user experience.",
+        "Collaborated with developers to understand best coding practices, version control (Git), and debugging techniques."
       ],
-      technologies: ["React", "Next.js", "Node.js", "TypeScript", "AWS"]
+      technologies: ["HTML", "CSS", "JavaScript", "PHP", "MySQL", "React.js"]
     },
-    {
-      title: "Full Stack Developer",
-      company: "Digital Innovations Ltd",
-      location: "Pune, India",
-      period: "2022 - 2023",
-      type: "Full-time",
-      description: "Developed and maintained multiple client projects, focusing on modern web technologies and responsive design principles.",
-      achievements: [
-        "Built 5+ client websites with 99% uptime",
-        "Reduced page load times by 35% through optimization",
-        "Integrated payment gateways and third-party APIs"
-      ],
-      technologies: ["React", "Express.js", "MongoDB", "PHP", "MySQL"]
-    },
-    {
-      title: "Frontend Developer Intern",
-      company: "StartupHub",
-      location: "Bangalore, India",
-      period: "2021 - 2022",
-      type: "Internship",
-      description: "Assisted in developing user interfaces for web applications and gained hands-on experience with modern frontend frameworks.",
-      achievements: [
-        "Converted 10+ Figma designs to responsive React components",
-        "Collaborated with UX team to improve user experience",
-        "Learned version control and agile development practices"
-      ],
-      technologies: ["React", "JavaScript", "CSS3", "Bootstrap", "Git"]
-    }
+
   ];
 
   return (
@@ -123,12 +97,37 @@ const Experience = () => {
                   </div>
 
                   {/* Description */}
-                  <p className="text-muted-foreground mb-6 leading-relaxed">
+                  {/* <p className="text-muted-foreground mb-6 leading-relaxed">
                     {exp.description}
-                  </p>
+                  </p> */}
+
+                  {/* Technologies */}
+                  <div>
+                    <h4 className="text-lg font-semibold text-gradient mb-3">
+                      Technologies Used
+                    </h4>
+                    <div className="flex flex-wrap gap-2">
+                      {exp.technologies.map((tech, techIndex) => (
+                        <motion.span
+                          key={techIndex}
+                          className="px-3 py-1 bg-secondary rounded-full text-sm font-medium tech-border hover:shadow-electric transition-all duration-300"
+                          initial={{ opacity: 0, scale: 0.8 }}
+                          animate={isInView ? { opacity: 1, scale: 1 } : {}}
+                          transition={{
+                            duration: 0.3,
+                            delay: index * 0.3 + techIndex * 0.05
+                          }}
+                          whileHover={{ scale: 1.1 }}
+                        >
+                          {tech}
+                        </motion.span>
+                      ))}
+                    </div>
+                  </div>
+
 
                   {/* Achievements */}
-                  <div className="mb-6">
+                  <div className="mb-6 pt-4">
                     <h4 className="text-lg font-semibold text-gradient-electric mb-3">
                       Key Achievements
                     </h4>
@@ -148,29 +147,7 @@ const Experience = () => {
                     </ul>
                   </div>
 
-                  {/* Technologies */}
-                  <div>
-                    <h4 className="text-lg font-semibold text-gradient mb-3">
-                      Technologies Used
-                    </h4>
-                    <div className="flex flex-wrap gap-2">
-                      {exp.technologies.map((tech, techIndex) => (
-                        <motion.span
-                          key={techIndex}
-                          className="px-3 py-1 bg-secondary rounded-full text-sm font-medium tech-border hover:shadow-electric transition-all duration-300"
-                          initial={{ opacity: 0, scale: 0.8 }}
-                          animate={isInView ? { opacity: 1, scale: 1 } : {}}
-                          transition={{ 
-                            duration: 0.3, 
-                            delay: index * 0.3 + techIndex * 0.05 
-                          }}
-                          whileHover={{ scale: 1.1 }}
-                        >
-                          {tech}
-                        </motion.span>
-                      ))}
-                    </div>
-                  </div>
+
                 </div>
               </motion.div>
             </motion.div>

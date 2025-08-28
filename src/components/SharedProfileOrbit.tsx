@@ -8,14 +8,16 @@ interface SharedProfileOrbitProps {
   imageClassName?: string;
   size?: "large" | "medium";
   useLayoutId?: boolean;
+  section?: "hero" | "about" | "skills";
 }
 
-const SharedProfileOrbit = ({ 
-  layoutId, 
-  className = "", 
+const SharedProfileOrbit = ({
+  layoutId,
+  className = "",
   imageClassName = "",
   size = "large",
-  useLayoutId = false
+  useLayoutId = false,
+  section = "hero"
 }: SharedProfileOrbitProps) => {
   const isLarge = size === "large";
   const imageSize = isLarge ? "w-80 h-80" : "w-64 h-64";
@@ -25,11 +27,17 @@ const SharedProfileOrbit = ({
     <motion.div
       layoutId={layoutId}
       className={`relative ${className}`}
-      transition={{ type: "spring", bounce: 0.25, duration: 0.8 }}
+      transition={{
+        type: "spring",
+        bounce: 0.15,
+        duration: 1.2,
+        ease: [0.25, 0.46, 0.45, 0.94]
+      }}
     >
       {/* Profile Image */}
       <motion.div
-        className="relative z-10"
+        layoutId={`${layoutId}-image`}
+        className="relative z-0"
         whileHover={{ scale: isLarge ? 1.05 : 1.02 }}
         transition={{ type: "spring", bounce: 0.4, duration: 0.6 }}
       >
@@ -42,8 +50,10 @@ const SharedProfileOrbit = ({
         </div>
       </motion.div>
 
-      {/* Tech Orbit Animation */}
-      <TechOrbit useLayoutId={useLayoutId} />
+      {/* Tech Orbit Animation - Only show in Hero and About sections */}
+      {section !== "skills" && (
+        <TechOrbit useLayoutId={useLayoutId} />
+      )}
     </motion.div>
   );
 };

@@ -9,17 +9,17 @@ const About = () => {
 
   const educationData = [
     {
-      year: "2020-2024",
+      year: "2024-2027",
       degree: "Bachelor of Engineering",
       field: "Computer Engineering",
-      institution: "University of Technology",
-      description: "Specialized in full-stack development, algorithms, and software engineering principles."
+      institution: "Dr. D. Y. Patil Institute of Technology, Pimpri, Pune",
+      description: "CGPA : 9.25"
     },
     {
-      year: "2018-2020",
-      degree: "Higher Secondary Certificate",
-      field: "Science Stream",
-      institution: "ABC College",
+      year: "2021-2024",
+      degree: "Diploma",
+      field: "Computer Engineering",
+      institution: "Shri Shivaji Vidya Prasarak Sanstha's B. S. Deore Polytechnic, Dhule",
       description: "Focused on Mathematics, Physics, and Computer Science fundamentals."
     }
   ];
@@ -44,21 +44,23 @@ const About = () => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           {/* Left side - Profile image with animated tech orbit */}
           <motion.div
-            className="flex justify-center"
+            className="flex justify-center lg:justify-start order-2 lg:order-1"
             initial={{ opacity: 0, x: -50 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            <SharedProfileOrbit 
+            <SharedProfileOrbit
               layoutId="profile-orbit"
               useLayoutId={true}
               size="large"
+              className="lg:mr-auto"
+              section="about"
             />
           </motion.div>
 
           {/* Right side - About content and education timeline */}
           <motion.div
-            className="space-y-8"
+            className="space-y-8 order-1 lg:order-2"
             initial={{ opacity: 0, x: 50 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.8, delay: 0.4 }}
@@ -67,13 +69,13 @@ const About = () => {
             <div className="space-y-4">
               <h3 className="text-2xl font-semibold text-gradient-electric">Who I Am</h3>
               <p className="text-lg text-muted-foreground leading-relaxed">
-                I'm a passionate full-stack developer with expertise in modern web technologies. 
-                I love building scalable applications that solve real-world problems and create 
+                I'm a passionate full-stack developer with expertise in modern web technologies.
+                I love building scalable applications that solve real-world problems and create
                 exceptional user experiences.
               </p>
               <p className="text-lg text-muted-foreground leading-relaxed">
-                With a strong foundation in both frontend and backend technologies, I enjoy 
-                the entire development process from concept to deployment. I'm always eager 
+                With a strong foundation in both frontend and backend technologies, I enjoy
+                the entire development process from concept to deployment. I'm always eager
                 to learn new technologies and improve my craft.
               </p>
             </div>
@@ -92,7 +94,7 @@ const About = () => {
                   >
                     {/* Timeline dot */}
                     <div className="absolute left-[-9px] top-0 w-4 h-4 bg-gradient-primary rounded-full shadow-glow"></div>
-                    
+
                     <div className="bg-card rounded-xl p-6 tech-border hover:shadow-glow transition-all duration-300">
                       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-2">
                         <h4 className="text-xl font-semibold text-primary">{edu.degree}</h4>
