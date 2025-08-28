@@ -18,7 +18,11 @@ import {
   SiTailwindcss,
 } from "react-icons/si";
 
-const TechOrbit = () => {
+interface TechOrbitProps {
+  useLayoutId?: boolean;
+}
+
+const TechOrbit = ({ useLayoutId = false }: TechOrbitProps) => {
   const techIcons = [
     { Icon: FaReact, color: "text-blue-400", name: "React" },
     { Icon: SiNextdotjs, color: "text-foreground", name: "Next.js" },
@@ -82,6 +86,7 @@ const TechOrbit = () => {
               whileHover={{ scale: 1.3, zIndex: 10 }}
             >
               <motion.div
+                layoutId={useLayoutId ? `tech-icon-${tech.name}` : undefined}
                 className={`w-12 h-12 rounded-lg bg-card/80 backdrop-blur-sm border border-primary/30 flex items-center justify-center shadow-glow hover:shadow-electric transition-all duration-300 ${tech.color}`}
                 whileHover={{ 
                   scale: 1.2,

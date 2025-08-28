@@ -1,8 +1,7 @@
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
-import profileImage from "@/assets/profile-image.jpg";
-import TechOrbit from "./TechOrbit";
+import SharedProfileOrbit from "./SharedProfileOrbit";
 
 const About = () => {
   const ref = useRef(null);
@@ -50,30 +49,11 @@ const About = () => {
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            <div className="relative">
-              <motion.div
-                className="relative z-10"
-                whileHover={{ scale: 1.02 }}
-                transition={{ type: "spring", bounce: 0.4, duration: 0.6 }}
-              >
-                <div className="w-80 h-80 rounded-2xl overflow-hidden shadow-purple ring-4 ring-purple/30">
-                  <img
-                    src={profileImage}
-                    alt="Vaibhav Sonar - About"
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-              </motion.div>
-              
-              {/* Animated tech orbit - moves from right to left */}
-              <motion.div
-                initial={{ x: 100, opacity: 0 }}
-                animate={isInView ? { x: 0, opacity: 1 } : {}}
-                transition={{ duration: 1, delay: 0.5 }}
-              >
-                <TechOrbit />
-              </motion.div>
-            </div>
+            <SharedProfileOrbit 
+              layoutId="profile-orbit"
+              useLayoutId={true}
+              size="large"
+            />
           </motion.div>
 
           {/* Right side - About content and education timeline */}

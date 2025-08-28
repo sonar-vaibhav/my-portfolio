@@ -67,8 +67,8 @@ const Skills = () => {
               initial={{ opacity: 0, scale: 0.8, y: 50 }}
               animate={isInView ? { opacity: 1, scale: 1, y: 0 } : {}}
               transition={{ 
-                duration: 0.6, 
-                delay: index * 0.1,
+                duration: 0.8, 
+                delay: index * 0.1 + 0.5,
                 type: "spring",
                 bounce: 0.4
               }}
@@ -82,11 +82,12 @@ const Skills = () => {
                 <div className="flex flex-col items-center text-center space-y-4">
                   {/* Skill Icon */}
                   <motion.div
-                    className={`text-4xl ${skill.color} group-hover:animate-pulse`}
+                    layoutId={`tech-icon-${skill.name}`}
+                    className={`text-4xl ${skill.color} group-hover:animate-pulse w-12 h-12 rounded-lg bg-card/80 backdrop-blur-sm border border-primary/30 flex items-center justify-center shadow-glow hover:shadow-electric transition-all duration-300`}
                     whileHover={{ scale: 1.2, rotate: 15 }}
-                    transition={{ type: "spring", bounce: 0.6 }}
+                    transition={{ type: "spring", bounce: 0.6, layout: { duration: 0.8 } }}
                   >
-                    <skill.Icon />
+                    <skill.Icon className="w-6 h-6" />
                   </motion.div>
                   
                   {/* Skill Name */}

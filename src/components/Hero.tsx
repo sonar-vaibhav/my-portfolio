@@ -1,7 +1,6 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import TechOrbit from "./TechOrbit";
-import profileImage from "@/assets/profile-image.jpg";
+import SharedProfileOrbit from "./SharedProfileOrbit";
 import { 
   FaGithub, 
   FaLinkedin, 
@@ -122,25 +121,11 @@ const Hero = () => {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.3 }}
           >
-            <div className="relative">
-              {/* Profile Image */}
-              <motion.div
-                className="relative z-10"
-                whileHover={{ scale: 1.05 }}
-                transition={{ type: "spring", bounce: 0.4, duration: 0.6 }}
-              >
-                <div className="w-80 h-80 rounded-full overflow-hidden shadow-glow ring-4 ring-primary/30">
-                  <img
-                    src={profileImage}
-                    alt="Vaibhav Sonar"
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-              </motion.div>
-
-              {/* Tech Orbit Animation */}
-              <TechOrbit />
-            </div>
+            <SharedProfileOrbit 
+              layoutId="profile-orbit"
+              useLayoutId={true}
+              size="large"
+            />
           </motion.div>
         </div>
       </div>
