@@ -11,107 +11,125 @@ const Projects = () => {
 
   const projects = [
     {
-      title: "E-Commerce Platform",
-      description: "A full-featured e-commerce platform built with React and Node.js",
-      longDescription: "A comprehensive e-commerce solution featuring user authentication, product catalog, shopping cart, payment integration with Stripe, order management, and admin dashboard. Built with modern technologies and best practices for scalability and performance.",
-      image: "/api/placeholder/400/250",
-      technologies: ["React", "Node.js", "Express", "MongoDB", "Stripe"],
-      githubUrl: "https://github.com/vaibhavsonar/ecommerce-platform",
-      liveUrl: "https://ecommerce-demo.vercel.app",
-      features: [
-        "User authentication and authorization",
-        "Product catalog with search and filtering", 
-        "Shopping cart and checkout process",
-        "Payment integration with Stripe",
-        "Order tracking and history",
-        "Admin dashboard for product management"
+      "title": "EZRooms – Rental Accommodation System",
+      "description": "A full-stack web application for students and property managers to find and manage rental accommodations.",
+      "longDescription": "EZRooms is a full-stack rental accommodation platform tailored for students and property managers. It includes real-time room availability, user authentication, role-based access, admin dashboard, property search with filters, review and rating system, favorites, and reporting feature. Integrated with Google Maps API for location-based property searches. Backend optimized with PHP & MySQL for scalable and efficient data management.",
+      "image": "/api/placeholder/400/250",
+      "technologies": ["HTML", "CSS", "JavaScript", "Bootstrap", "PHP", "MySQL"],
+      "githubUrl": "https://github.com/sonar-vaibhav/rental-accommodation-system",
+      "liveUrl": "",
+      "features": [
+        "Role-based access control for students, owners, and admins",
+        "User authentication and profile management",
+        "Admin dashboard with reporting system",
+        "Property search with advanced filters",
+        "Reviews and ratings for rooms and managers",
+        "Favorite room bookmarking",
+        "Google Maps API integration"
       ]
     },
     {
-      title: "Task Management App",
-      description: "A collaborative task management application with real-time updates",
-      longDescription: "A modern task management application that enables teams to collaborate effectively with real-time updates, drag-and-drop functionality, and comprehensive project tracking. Features include team management, deadline tracking, and progress visualization.",
-      image: "/api/placeholder/400/250",
-      technologies: ["Next.js", "TypeScript", "Prisma", "PostgreSQL", "Socket.io"],
-      githubUrl: "https://github.com/vaibhavsonar/task-manager",
-      liveUrl: "https://taskmanager-demo.vercel.app",
-      features: [
-        "Real-time collaboration with Socket.io",
-        "Drag and drop task organization",
-        "Team member management",
-        "Progress tracking and analytics",
-        "Deadline notifications",
-        "File attachments and comments"
-      ]
-    },
-    {
-      title: "Social Media Dashboard",
-      description: "Analytics dashboard for social media management",
-      longDescription: "A comprehensive social media analytics dashboard that aggregates data from multiple platforms, provides detailed insights, and enables content scheduling. Built with modern data visualization libraries and responsive design principles.",
-      image: "/api/placeholder/400/250",
-      technologies: ["React", "Chart.js", "Firebase", "Tailwind CSS", "API Integration"],
-      githubUrl: "https://github.com/vaibhavsonar/social-dashboard",
-      liveUrl: "https://social-dashboard-demo.vercel.app",
-      features: [
-        "Multi-platform social media integration",
-        "Real-time analytics and reporting",
-        "Content scheduling and publishing",
-        "Engagement metrics visualization",
-        "Custom dashboard widgets",
-        "Export reports in multiple formats"
-      ]
-    },
-    {
-      title: "Weather Forecast App",
-      description: "Beautiful weather app with location-based forecasts",
-      longDescription: "An elegant weather forecasting application featuring location-based weather data, 7-day forecasts, interactive maps, and beautiful animations. Utilizes geolocation API and integrates with multiple weather service providers for accurate data.",
-      image: "/api/placeholder/400/250",
-      technologies: ["React", "OpenWeather API", "Geolocation", "CSS Animations"],
-      githubUrl: "https://github.com/vaibhavsonar/weather-app",
-      liveUrl: "https://weather-forecast-demo.vercel.app",
-      features: [
-        "Location-based weather detection",
-        "7-day detailed forecast",
-        "Interactive weather maps",
-        "Hourly weather predictions",
-        "Weather alerts and notifications",
-        "Beautiful animated weather icons"
-      ]
-    },
-    {
-      title: "Portfolio Website",
-      description: "Personal portfolio website with modern animations",
-      longDescription: "A modern, fully responsive portfolio website showcasing projects, skills, and experience. Features smooth animations, interactive elements, and optimized performance. Built with cutting-edge technologies and design principles.",
-      image: "/api/placeholder/400/250",
-      technologies: ["React", "Framer Motion", "Tailwind CSS", "TypeScript"],
-      githubUrl: "https://github.com/vaibhavsonar/portfolio",
-      liveUrl: "https://vaibhavsonar.dev",
-      features: [
-        "Smooth scroll animations",
-        "Interactive project showcases",
-        "Responsive design for all devices",
-        "Contact form integration",
-        "SEO optimization",
-        "Fast loading performance"
-      ]
-    },
-    {
-      title: "Blog Platform",
-      description: "Full-stack blog platform with CMS functionality",
-      longDescription: "A complete blogging platform with content management system, user authentication, comment system, and SEO optimization. Features include rich text editor, image uploads, category management, and social sharing capabilities.",
-      image: "/api/placeholder/400/250",
-      technologies: ["Next.js", "Sanity CMS", "Vercel", "SEO", "Authentication"],
-      githubUrl: "https://github.com/vaibhavsonar/blog-platform",
-      liveUrl: "https://blog-demo.vercel.app",
-      features: [
-        "Rich text editor with media support",
-        "User authentication and profiles",
-        "Comment system with moderation",
-        "SEO optimization and meta tags",
-        "Social media sharing",
-        "Content categorization and tagging"
+      "title": "Procurement Management System – DPU",
+      "description": "A live project developed for Dr. D. Y. Patil Institute of Technology to manage procurement workflows.",
+      "longDescription": "The Procurement Management System is a live project built for DPU’s internal operations to streamline procurement and approval workflows. It provides modules for requisition requests, approvals, vendor management, and purchase tracking. Developed with a focus on automation, efficiency, and secure role-based access to handle different stakeholders in the procurement lifecycle.",
+      "image": "/api/placeholder/400/250",
+      "technologies": ["React", "TailwindCSS"],
+      "githubUrl": "https://github.com/sonar-vaibhav/dpu-procurement-portal",
+      "liveUrl": "https://dpu-procurement-portal.vercel.app/",
+      "features": [
+        "Role-based user access for staff, faculty, and admins",
+        "Requisition request and approval workflow",
+        "Vendor and purchase order management",
+        "Tracking and auditing of procurement lifecycle",
+        "Responsive UI with TailwindCSS",
+        "Secure backend API with Node.js and MongoDB"
       ]
     }
+    // {
+    //   title: "Task Management App",
+    //   description: "A collaborative task management application with real-time updates",
+    //   longDescription: "A modern task management application that enables teams to collaborate effectively with real-time updates, drag-and-drop functionality, and comprehensive project tracking. Features include team management, deadline tracking, and progress visualization.",
+    //   image: "/api/placeholder/400/250",
+    //   technologies: ["Next.js", "TypeScript", "Prisma", "PostgreSQL", "Socket.io"],
+    //   githubUrl: "https://github.com/vaibhavsonar/task-manager",
+    //   liveUrl: "https://taskmanager-demo.vercel.app",
+    //   features: [
+    //     "Real-time collaboration with Socket.io",
+    //     "Drag and drop task organization",
+    //     "Team member management",
+    //     "Progress tracking and analytics",
+    //     "Deadline notifications",
+    //     "File attachments and comments"
+    //   ]
+    // },
+    // {
+    //   title: "Social Media Dashboard",
+    //   description: "Analytics dashboard for social media management",
+    //   longDescription: "A comprehensive social media analytics dashboard that aggregates data from multiple platforms, provides detailed insights, and enables content scheduling. Built with modern data visualization libraries and responsive design principles.",
+    //   image: "/api/placeholder/400/250",
+    //   technologies: ["React", "Chart.js", "Firebase", "Tailwind CSS", "API Integration"],
+    //   githubUrl: "https://github.com/vaibhavsonar/social-dashboard",
+    //   liveUrl: "https://social-dashboard-demo.vercel.app",
+    //   features: [
+    //     "Multi-platform social media integration",
+    //     "Real-time analytics and reporting",
+    //     "Content scheduling and publishing",
+    //     "Engagement metrics visualization",
+    //     "Custom dashboard widgets",
+    //     "Export reports in multiple formats"
+    //   ]
+    // },
+    // {
+    //   title: "Weather Forecast App",
+    //   description: "Beautiful weather app with location-based forecasts",
+    //   longDescription: "An elegant weather forecasting application featuring location-based weather data, 7-day forecasts, interactive maps, and beautiful animations. Utilizes geolocation API and integrates with multiple weather service providers for accurate data.",
+    //   image: "/api/placeholder/400/250",
+    //   technologies: ["React", "OpenWeather API", "Geolocation", "CSS Animations"],
+    //   githubUrl: "https://github.com/vaibhavsonar/weather-app",
+    //   liveUrl: "https://weather-forecast-demo.vercel.app",
+    //   features: [
+    //     "Location-based weather detection",
+    //     "7-day detailed forecast",
+    //     "Interactive weather maps",
+    //     "Hourly weather predictions",
+    //     "Weather alerts and notifications",
+    //     "Beautiful animated weather icons"
+    //   ]
+    // },
+    // {
+    //   title: "Portfolio Website",
+    //   description: "Personal portfolio website with modern animations",
+    //   longDescription: "A modern, fully responsive portfolio website showcasing projects, skills, and experience. Features smooth animations, interactive elements, and optimized performance. Built with cutting-edge technologies and design principles.",
+    //   image: "/api/placeholder/400/250",
+    //   technologies: ["React", "Framer Motion", "Tailwind CSS", "TypeScript"],
+    //   githubUrl: "https://github.com/vaibhavsonar/portfolio",
+    //   liveUrl: "https://vaibhavsonar.dev",
+    //   features: [
+    //     "Smooth scroll animations",
+    //     "Interactive project showcases",
+    //     "Responsive design for all devices",
+    //     "Contact form integration",
+    //     "SEO optimization",
+    //     "Fast loading performance"
+    //   ]
+    // },
+    // {
+    //   title: "Blog Platform",
+    //   description: "Full-stack blog platform with CMS functionality",
+    //   longDescription: "A complete blogging platform with content management system, user authentication, comment system, and SEO optimization. Features include rich text editor, image uploads, category management, and social sharing capabilities.",
+    //   image: "/api/placeholder/400/250",
+    //   technologies: ["Next.js", "Sanity CMS", "Vercel", "SEO", "Authentication"],
+    //   githubUrl: "https://github.com/vaibhavsonar/blog-platform",
+    //   liveUrl: "https://blog-demo.vercel.app",
+    //   features: [
+    //     "Rich text editor with media support",
+    //     "User authentication and profiles",
+    //     "Comment system with moderation",
+    //     "SEO optimization and meta tags",
+    //     "Social media sharing",
+    //     "Content categorization and tagging"
+    //   ]
+    // }
   ];
 
   return (
@@ -127,7 +145,7 @@ const Projects = () => {
             Featured <span className="text-gradient">Projects</span>
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            A showcase of my latest work and creative solutions
+            Here’s what I’ve built so far — a collection of projects that showcase my journey across diverse tech stacks. I’m constantly learning and creating, so more projects will be added soon.
           </p>
         </motion.div>
 
@@ -160,7 +178,7 @@ const Projects = () => {
                   <h3 className="text-xl font-bold mb-3 text-foreground group-hover:text-primary transition-colors">
                     {project.title}
                   </h3>
-                  
+
                   <p className="text-muted-foreground mb-4 line-clamp-3">
                     {project.description}
                   </p>
@@ -186,7 +204,7 @@ const Projects = () => {
                   <div className="flex items-center justify-between">
                     <div className="flex gap-3">
                       <Button
-                        variant="outline"
+                        variant="secondary"
                         size="sm"
                         className="tech-border hover:bg-primary/10"
                         onClick={(e) => {
@@ -195,21 +213,22 @@ const Projects = () => {
                         }}
                       >
                         <FaGithub className="mr-2" />
-                        Code
                       </Button>
-                      
-                      <Button
-                        variant="outline"
-                        size="sm"
-                        className="tech-border hover:bg-electric/10"
-                        onClick={(e) => {
-                          e.stopPropagation();
-                          window.open(project.liveUrl, "_blank");
-                        }}
-                      >
-                        <FaExternalLinkAlt className="mr-2" />
-                        Live
-                      </Button>
+
+                      {project.liveUrl && (
+                        <Button
+                          variant="secondary"
+                          size="sm"
+                          className="tech-border hover:bg-electric/10"
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            window.open(project.liveUrl, "_blank");
+                          }}
+                        >
+                          <FaExternalLinkAlt className="mr-2" />
+                        </Button>
+                      )}
+
                     </div>
 
                     <Button
@@ -267,7 +286,7 @@ const Projects = () => {
                     <h3 className="text-3xl font-bold text-gradient mb-4">
                       {projects[selectedProject].title}
                     </h3>
-                    <p className="text-lg text-muted-foreground leading-relaxed">
+                    <p className="text-lg text-muted-foreground leading-relaxed text-justify">
                       {projects[selectedProject].longDescription}
                     </p>
                   </div>
@@ -313,14 +332,16 @@ const Projects = () => {
                       <FaGithub className="mr-2" />
                       View Source Code
                     </Button>
-                    <Button
-                      variant="outline"
-                      className="tech-border hover:bg-electric/10 flex-1"
-                      onClick={() => window.open(projects[selectedProject].liveUrl, "_blank")}
-                    >
-                      <FaExternalLinkAlt className="mr-2" />
-                      Live Demo
-                    </Button>
+                    {projects[selectedProject].liveUrl && (
+                      <Button
+                        variant="outline"
+                        className="tech-border hover:bg-electric/10 flex-1"
+                        onClick={() => window.open(projects[selectedProject].liveUrl, "_blank")}
+                      >
+                        <FaExternalLinkAlt className="mr-2" />
+                        Live Demo
+                      </Button>
+                    )}
                   </div>
                 </div>
               </motion.div>

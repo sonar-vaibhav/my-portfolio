@@ -70,15 +70,23 @@
 @layer base {
   * {
     @apply border-border;
+    cursor: none !important; /* Hide default cursor */
   }
 
   body {
     @apply bg-background text-foreground font-sans antialiased;
     overflow-x: hidden;
+    cursor: none !important; /* Hide default cursor on body */
   }
   
   html {
     scroll-behavior: smooth;
+    cursor: none !important; /* Hide default cursor on html */
+  }
+  
+  /* Show default cursor for specific elements that need it */
+  button, a, input, textarea, [role="button"], .cursor-pointer {
+    cursor: none !important;
   }
 }
 

@@ -114,7 +114,7 @@ const Contact = () => {
             Let's <span className="text-gradient">Connect</span>
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Have a project in mind or just want to chat? I'd love to hear from you!
+            Got a project in mind or just want to say hi? I’d love to hear from you.
           </p>
         </motion.div>
 
@@ -131,35 +131,12 @@ const Contact = () => {
                 Get in Touch
               </h3>
 
-              <p className="text-lg text-muted-foreground leading-relaxed">
-                I'm always open to discussing new opportunities, creative ideas, or
-                potential collaborations. Whether you have a project in mind or just
-                want to connect, feel free to reach out!
+              <p className="text-lg text-muted-foreground leading-relaxed text-justify">
+                I’m always open to new opportunities, ideas, and collaborations.
+                Feel free to reach out — let’s build something amazing together.
               </p>
             </div>
 
-            {/* Contact Info Cards */}
-            <div className="space-y-4">
-              {contactInfo.map((info, index) => (
-                <motion.a
-                  key={index}
-                  href={info.href}
-                  className="flex items-center p-4 bg-card rounded-xl tech-border hover:shadow-glow transition-all duration-300 group"
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={isInView ? { opacity: 1, x: 0 } : {}}
-                  transition={{ duration: 0.6, delay: 0.4 + index * 0.1 }}
-                  whileHover={{ scale: 1.02 }}
-                >
-                  <div className={`p-3 rounded-lg bg-secondary mr-4 ${info.color} group-hover:animate-pulse`}>
-                    <info.icon className="text-xl" />
-                  </div>
-                  <div>
-                    <p className="font-medium text-foreground">{info.label}</p>
-                    <p className="text-muted-foreground">{info.value}</p>
-                  </div>
-                </motion.a>
-              ))}
-            </div>
 
             {/* Social Links */}
             <div>
@@ -355,11 +332,8 @@ const Contact = () => {
           animate={isInView ? { opacity: 1 } : {}}
           transition={{ duration: 0.6, delay: 1 }}
         >
-          <p className="text-muted-foreground">
-            © 2024 Vaibhav Sonar. Built with React, Framer Motion, and lots of ☕
-          </p>
           <p className="text-sm text-muted-foreground mt-2">
-            Made with <span className="text-red-500">❤️</span> in India
+            Made with <span className="text-red-500">💖</span> by Vaibhav Sonar
           </p>
         </motion.footer>
       </div>
