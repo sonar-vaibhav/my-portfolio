@@ -20,7 +20,7 @@ const About = () => {
       degree: "Diploma",
       field: "Computer Engineering",
       institution: "Shri Shivaji Vidya Prasarak Sanstha's B. S. Deore Polytechnic, Dhule",
-      description: "Focused on Mathematics, Physics, and Computer Science fundamentals."
+      description: "Percentage : 92.86%"
     }
   ];
 
@@ -44,7 +44,7 @@ const About = () => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           {/* Left side - Profile image with animated tech orbit */}
           <motion.div
-            className="flex justify-center lg:justify-start order-2 lg:order-1"
+            className="hidden md:flex justify-center lg:justify-start order-2 lg:order-1"
             initial={{ opacity: 0, x: -50 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.8, delay: 0.2 }}

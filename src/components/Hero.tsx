@@ -10,7 +10,7 @@ import {
 
 const Hero = () => {
   const handleEmailClick = () => {
-    window.location.href = "mailto:vaibhavsonar2309@gmail.com";
+    window.location.href = "mailto:sonarvebs@gmail.com";
   };
 
   const handleResumeClick = () => {
@@ -50,13 +50,12 @@ const Hero = () => {
             </motion.h1>
 
             <motion.p
-              className="text-xl text-muted-foreground mb-8 max-w-2xl"
+              className="text-xl text-muted-foreground mb-8 text-justify"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.4 }}
             >
-              Full-stack developer passionate about creating modern, scalable web applications
-              with cutting-edge technologies and beautiful user experiences.
+              A self-driven Full-Stack Developer passionate about solving real-world problems with clean, scalable, and modern web applications. Always exploring new technologies and turning ideas into impactful digital experiences.
             </motion.p>
 
             <motion.div

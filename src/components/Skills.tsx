@@ -81,7 +81,7 @@ const Skills = () => {
         { Icon: SiGit, name: "Git", color: "text-red-500", level: 88 },
         { Icon: FaGithub, name: "GitHub", color: "text-foreground", level: 88 },
         { Icon: SiPostman, name: "Postman", color: "text-orange-500", level: 85 },
-        { Icon: FaGithub, name: "VS Code", color: "text-blue-500", level: 90 },
+        // { Icon: FaGithub, name: "VS Code", color: "text-blue-500", level: 90 },
       ]
     }
   ];

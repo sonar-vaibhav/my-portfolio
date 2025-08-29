@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef, useState } from "react";
 import { useToast } from "@/hooks/use-toast";
+import emailjs from "emailjs-com";
 import {
   FaGithub,
   FaLinkedin,
@@ -18,6 +19,7 @@ const Contact = () => {
 
   const [formData, setFormData] = useState({
     name: "",
+    phone: "",
     email: "",
     message: ""
   });
@@ -35,20 +37,43 @@ const Contact = () => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    // Simulate form submission
     try {
-      await new Promise(resolve => setTimeout(resolve, 1000));
+      const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID as string;
+      const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID as string;
+      const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY as string;
+
+      if (!serviceId || !templateId || !publicKey) {
+        throw new Error("EmailJS environment variables are not set");
+      }
+
+      await emailjs.send(
+        serviceId,
+        templateId,
+        {
+          // Preferred variable names for your EmailJS template
+          timestamp: new Date().toISOString(),
+          name: formData.name,
+          contact_no: formData.phone,
+          email: formData.email,
+          message: formData.message,
+
+          // Also send common aliases for broader template compatibility
+          from_name: formData.name,
+          from_email: formData.email,
+        },
+        publicKey
+      );
 
       toast({
         title: "Message Sent!",
         description: "Thank you for reaching out. I'll get back to you soon!",
       });
 
-      setFormData({ name: "", email: "", message: "" });
+      setFormData({ name: "", phone: "", email: "", message: "" });
     } catch (error) {
       toast({
         title: "Error",
-        description: "Something went wrong. Please try again.",
+        description: "Something went wrong sending your message. Please try again.",
         variant: "destructive",
       });
     } finally {
@@ -60,8 +85,8 @@ const Contact = () => {
     {
       icon: FaEnvelope,
       label: "Email",
-      value: "vaibhavsonar2309@gmail.com",
-      href: "mailto:vaibhavsonar2309@gmail.com",
+      value: "sonarvebs@gmail.com",
+      href: "mailto:sonarvebs@gmail.com",
       color: "text-electric"
     },
     {
@@ -96,7 +121,7 @@ const Contact = () => {
     {
       icon: FaEnvelope,
       label: "Email",
-      href: "mailto:vaibhavsonar2309@gmail.com",
+      href: "mailto:sonarvebs@gmail.com",
       color: "text-electric hover:text-electric-glow"
     }
   ];
@@ -210,7 +235,7 @@ const Contact = () => {
 
                 {/* Email */}
                 <motion.a
-                  href="mailto:vaibhavsonar2309@gmail.com"
+                  href="mailto:sonarvebs@gmail.com"
                   className="group relative"
                   initial={{ opacity: 0, y: 20 }}
                   animate={isInView ? { opacity: 1, y: 0 } : {}}
@@ -264,6 +289,22 @@ const Contact = () => {
                       onChange={handleInputChange}
                       className="w-full px-4 py-3 rounded-lg bg-transparent border border-border text-foreground placeholder:text-muted-foreground/50 focus:outline-none focus:border-electric focus:ring-1 focus:ring-electric/20 transition-all duration-300"
                       placeholder="Your full name"
+                    />
+                  </div>
+
+                  <div className="form-group">
+                    <label htmlFor="phone" className="block text-sm font-medium text-muted-foreground mb-2 font-semibold">
+                      Contact Number
+                    </label>
+                    <input
+                      id="phone"
+                      name="phone"
+                      type="tel"
+                      required
+                      value={formData.phone}
+                      onChange={handleInputChange}
+                      className="w-full px-4 py-3 rounded-lg bg-transparent border border-border text-foreground placeholder:text-muted-foreground/50 focus:outline-none focus:border-electric focus:ring-1 focus:ring-electric/20 transition-all duration-300"
+                      placeholder="e.g. +91 98765 43210"
                     />
                   </div>
 

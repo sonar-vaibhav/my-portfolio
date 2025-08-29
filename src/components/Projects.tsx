@@ -14,7 +14,7 @@ const Projects = () => {
       "title": "EZRooms – Rental Accommodation System",
       "description": "A full-stack web application for students and property managers to find and manage rental accommodations.",
       "longDescription": "EZRooms is a full-stack rental accommodation platform tailored for students and property managers. It includes real-time room availability, user authentication, role-based access, admin dashboard, property search with filters, review and rating system, favorites, and reporting feature. Integrated with Google Maps API for location-based property searches. Backend optimized with PHP & MySQL for scalable and efficient data management.",
-      "image": "/api/placeholder/400/250",
+      "image": "/project-cards/ezrooms.png",
       "technologies": ["HTML", "CSS", "JavaScript", "Bootstrap", "PHP", "MySQL"],
       "githubUrl": "https://github.com/sonar-vaibhav/rental-accommodation-system",
       "liveUrl": "",
@@ -32,7 +32,7 @@ const Projects = () => {
       "title": "Procurement Management System – DPU",
       "description": "A live project developed for Dr. D. Y. Patil Institute of Technology to manage procurement workflows.",
       "longDescription": "The Procurement Management System is a live project built for DPU’s internal operations to streamline procurement and approval workflows. It provides modules for requisition requests, approvals, vendor management, and purchase tracking. Developed with a focus on automation, efficiency, and secure role-based access to handle different stakeholders in the procurement lifecycle.",
-      "image": "/api/placeholder/400/250",
+      "image": "/project-cards/image.png",
       "technologies": ["React", "TailwindCSS"],
       "githubUrl": "https://github.com/sonar-vaibhav/dpu-procurement-portal",
       "liveUrl": "https://dpu-procurement-portal.vercel.app/",
@@ -163,10 +163,13 @@ const Projects = () => {
               <div className="bg-card rounded-2xl overflow-hidden tech-border hover:shadow-glow transition-all duration-300 h-full">
                 {/* Project Image */}
                 <div className="relative overflow-hidden h-48 bg-gradient-tech">
+                  <img
+                    src={project.image}
+                    alt={project.title}
+                    loading="lazy"
+                    className="w-full h-full object-cover transform transition-transform duration-300 group-hover:scale-105"
+                  />
                   <div className="absolute inset-0 bg-gradient-primary opacity-20"></div>
-                  <div className="absolute inset-0 flex items-center justify-center text-6xl text-primary/30">
-                    <FaExternalLinkAlt />
-                  </div>
                   <motion.div
                     className="absolute inset-0 bg-gradient-electric opacity-0 group-hover:opacity-30 transition-opacity duration-300"
                     whileHover={{ scale: 1.1 }}

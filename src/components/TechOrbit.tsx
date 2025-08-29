@@ -96,7 +96,7 @@ const TechOrbit = ({ useLayoutId = false }: TechOrbitProps) => {
           ease: "linear",
         }}
         style={{
-          transformOrigin: "center center",
+          transformOrigin: "50% 50%",
         }}
       >
         {techIcons.map((tech, index) => {
@@ -111,8 +111,8 @@ const TechOrbit = ({ useLayoutId = false }: TechOrbitProps) => {
               key={tech.name}
               className="absolute top-1/2 left-1/2 w-12 h-12"
               style={{
-                transform: `rotate(${angle}deg) translateX(${radius}px) rotate(-${angle}deg)`,
-                transformOrigin: "0 0",
+                transform: `translate(-50%, -50%) rotate(${angle}deg) translateX(${radius}px) rotate(-${angle}deg)`,
+                transformOrigin: "50% 50%",
               }}
             >
               <motion.button

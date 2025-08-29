@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 const Navigation = () => {
   const [activeSection, setActiveSection] = useState("home");
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const navItems = [
     { id: "home", label: "Home" },
@@ -40,6 +41,7 @@ const Navigation = () => {
     if (element) {
       element.scrollIntoView({ behavior: "smooth" });
     }
+    setIsMenuOpen(false);
   };
 
   return (
@@ -54,7 +56,7 @@ const Navigation = () => {
       transition={{ duration: 0.5 }}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16">
+        <div className="flex items-center justify-between h-12 md:h-16">
           {/* Logo */}
           <motion.div
             className="text-2xl font-bold text-gradient cursor-pointer"
@@ -95,13 +97,44 @@ const Navigation = () => {
             <motion.button
               className="p-2 rounded-lg hover:bg-secondary"
               whileTap={{ scale: 0.95 }}
+              aria-label="Toggle menu"
+              aria-expanded={isMenuOpen}
+              onClick={() => setIsMenuOpen(prev => !prev)}
             >
-              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-              </svg>
+              {isMenuOpen ? (
+                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              ) : (
+                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+                </svg>
+              )}
             </motion.button>
           </div>
         </div>
+
+        {/* Mobile dropdown */}
+        <motion.div
+          className="md:hidden px-4 pb-4"
+          initial={false}
+          animate={{ height: isMenuOpen ? "auto" : 0, opacity: isMenuOpen ? 1 : 0 }}
+          style={{ overflow: "hidden" }}
+        >
+          <div className="mt-2 space-y-2 bg-background/90 backdrop-blur-lg rounded-lg border border-primary/20 p-3">
+            {navItems.map((item) => (
+              <button
+                key={item.id}
+                onClick={() => scrollToSection(item.id)}
+                className={`w-full text-left px-3 py-2 rounded-md transition-colors ${
+                  activeSection === item.id ? "bg-primary/10 text-primary" : "text-foreground hover:bg-secondary"
+                }`}
+              >
+                {item.label}
+              </button>
+            ))}
+          </div>
+        </motion.div>
       </div>
     </motion.nav>
   );

@@ -70,23 +70,40 @@
 @layer base {
   * {
     @apply border-border;
-    cursor: none !important; /* Hide default cursor */
   }
 
   body {
     @apply bg-background text-foreground font-sans antialiased;
     overflow-x: hidden;
-    cursor: none !important; /* Hide default cursor on body */
   }
   
   html {
     scroll-behavior: smooth;
-    cursor: none !important; /* Hide default cursor on html */
+    overflow-x: hidden;
+  }
+
+  /* Hide cursor only on medium screens and up (desktop/tablet) */
+  @media (min-width: 768px) {
+    * {
+      cursor: none !important;
+    }
+    body {
+      cursor: none !important;
+    }
+    html {
+      cursor: none !important;
+    }
+    /* Keep no cursor on interactive elements as per design */
+    button, a, input, textarea, [role="button"], .cursor-pointer {
+      cursor: none !important;
+    }
   }
   
-  /* Show default cursor for specific elements that need it */
-  button, a, input, textarea, [role="button"], .cursor-pointer {
-    cursor: none !important;
+  /* On mobile (below md), allow normal cursor/touch default */
+  @media (max-width: 767.98px) {
+    button, a, input, textarea, [role="button"], .cursor-pointer, body, html, * {
+      cursor: auto !important;
+    }
   }
 }
 

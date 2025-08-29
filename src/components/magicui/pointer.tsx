@@ -13,8 +13,14 @@ interface PointerProps {
 export function Pointer({ children, className, image = "/image.png" }: PointerProps) {
     const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
     const [isHovering, setIsHovering] = useState(false);
+    const [isMobile, setIsMobile] = useState(false);
 
     useEffect(() => {
+        const mq = window.matchMedia("(max-width: 767.98px)");
+        const updateIsMobile = () => setIsMobile(mq.matches);
+        updateIsMobile();
+        mq.addEventListener("change", updateIsMobile);
+
         const handleMouseMove = (e: MouseEvent) => {
             setMousePosition({ x: e.clientX, y: e.clientY });
         };
@@ -27,11 +33,16 @@ export function Pointer({ children, className, image = "/image.png" }: PointerPr
         document.addEventListener("mouseleave", handleMouseLeave);
 
         return () => {
+            mq.removeEventListener("change", updateIsMobile);
             document.removeEventListener("mousemove", handleMouseMove);
             document.removeEventListener("mouseenter", handleMouseEnter);
             document.removeEventListener("mouseleave", handleMouseLeave);
         };
     }, []);
+
+    if (isMobile) {
+        return null;
+    }
 
     return (
         <>
