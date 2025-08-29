@@ -30,10 +30,10 @@ const Projects = () => {
     },
     {
       "title": "Procurement Management System – DPU",
-      "description": "A live project developed for Dr. D. Y. Patil Institute of Technology to manage procurement workflows.",
-      "longDescription": "The Procurement Management System is a live project built for DPU’s internal operations to streamline procurement and approval workflows. It provides modules for requisition requests, approvals, vendor management, and purchase tracking. Developed with a focus on automation, efficiency, and secure role-based access to handle different stakeholders in the procurement lifecycle.",
+      "description": "A live project in development for Dr. D. Y. Patil Institute of Technology to manage procurement workflows.",
+      "longDescription": "The Procurement Management System is an ongoing live project built for DPU’s internal operations to streamline procurement and approval workflows. It will provide modules for requisition requests, approvals, vendor management, and purchase tracking. The system is being developed with a focus on automation, efficiency, and secure role-based access to handle different stakeholders in the procurement lifecycle.",
       "image": "/project-cards/image.png",
-      "technologies": ["React", "TailwindCSS"],
+      "technologies": ["React", "TailwindCSS", ".NET"],
       "githubUrl": "https://github.com/sonar-vaibhav/dpu-procurement-portal",
       "liveUrl": "https://dpu-procurement-portal.vercel.app/",
       "features": [
@@ -42,7 +42,7 @@ const Projects = () => {
         "Vendor and purchase order management",
         "Tracking and auditing of procurement lifecycle",
         "Responsive UI with TailwindCSS",
-        "Secure backend API with Node.js and MongoDB"
+        "Secure backend API powered by .NET (under development)"
       ]
     }
     // {
