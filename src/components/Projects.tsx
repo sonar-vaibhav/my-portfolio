@@ -44,7 +44,24 @@ const Projects = () => {
         "Responsive UI with TailwindCSS",
         "Secure backend API powered by .NET (under development)"
       ]
+    },
+    {
+      "title": "MailCraft – AI Email Assistant",
+      "description": "A Chrome extension that helps users write, rephrase, and polish emails using AI, directly inside Gmail.",
+      "longDescription": "MailCraft is a productivity-focused Chrome extension that integrates AI assistance into Gmail’s compose window. It allows users to instantly rewrite subject lines and email bodies in different tones (formal, casual, persuasive) and even apply custom prompts with inline commands. Designed with a smooth UI that blends seamlessly into Gmail, MailCraft empowers professionals, students, and teams to write impactful and clear emails faster. It securely handles API key storage using Chrome Storage API, ensuring privacy while leveraging Google Gemini AI for high-quality rephrasings.",
+      "image": "/project-cards/mailcraft.png",
+      "technologies": ["HTML", "CSS", "JavaScript", "Chrome Extensions API", "Google Gemini AI"],
+      "githubUrl": "https://github.com/sonar-vaibhav/mailcraft-ai",
+      "liveUrl": "",
+      "features": [
+        "AI-powered rewriting of email subject and body in real-time",
+        "Tone selection dropdown (formal, casual, persuasive)",
+        "Custom inline prompts with !@# syntax",
+        "Seamless integration inside Gmail compose window",
+        "Secure API key storage using Chrome Storage API"
+      ]
     }
+
     // {
     //   title: "Task Management App",
     //   description: "A collaborative task management application with real-time updates",
@@ -162,12 +179,12 @@ const Projects = () => {
             >
               <div className="bg-card rounded-2xl overflow-hidden tech-border hover:shadow-glow transition-all duration-300 h-full">
                 {/* Project Image */}
-                <div className="relative overflow-hidden h-48 bg-gradient-tech">
+                <div className="relative overflow-hidden bg-gradient-tech pb-[56.25%]">
                   <img
                     src={project.image}
                     alt={project.title}
                     loading="lazy"
-                    className="w-full h-full object-cover transform transition-transform duration-300 group-hover:scale-105"
+                    className="absolute inset-0 w-full h-full object-cover transform transition-transform duration-300 group-hover:scale-105"
                   />
                   <div className="absolute inset-0 bg-gradient-primary opacity-20"></div>
                   <motion.div
