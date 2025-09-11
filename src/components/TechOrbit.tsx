@@ -1,4 +1,6 @@
 import { motion } from "framer-motion";
+import { useIsMobile } from "@/hooks/use-mobile";
+import { useState } from "react";
 import {
   FaReact,
   FaNodeJs,
@@ -33,7 +35,11 @@ interface TechOrbitProps {
   useLayoutId?: boolean;
 }
 
+type IconState = 'idle' | 'exploding' | 'destroyed';
+
 const TechOrbit = ({ useLayoutId = false }: TechOrbitProps) => {
+  const [iconStates, setIconStates] = useState<Record<string, IconState>>({});
+  const [removalAngles, setRemovalAngles] = useState<Record<string, number>>({});
   const techIcons = [
     // Programming Languages
     { Icon: SiC, color: "text-gray-500", name: "C" },
@@ -50,8 +56,6 @@ const TechOrbit = ({ useLayoutId = false }: TechOrbitProps) => {
     { Icon: SiTailwindcss, color: "text-electric", name: "Tailwind" },
     { Icon: FaBootstrap, color: "text-purple-500", name: "Bootstrap" },
     { Icon: SiRedux, color: "text-purple-500", name: "Redux" },
-    { Icon: FaReact, color: "text-orange-600", name: "Zustand" },
-    { Icon: SiSass, color: "text-pink-500", name: "SASS" },
 
     // Backend
     { Icon: FaPhp, color: "text-purple-500", name: "PHP" },
@@ -70,17 +74,31 @@ const TechOrbit = ({ useLayoutId = false }: TechOrbitProps) => {
     { Icon: FaGithub, color: "text-blue-500", name: "VS Code" },
   ];
 
-  const handleIconClick = (techName: string) => {
-    // You can customize what happens when an icon is clicked
-    console.log(`${techName} icon clicked!`);
+  const isMobile = useIsMobile();
 
-    // Examples of what you could do:
-    // - Navigate to a specific section
-    // - Show a tooltip with skill details
-    // - Open a modal with more information
-    // - Scroll to a specific project that uses this tech
-    // - Play a sound effect
-    // - Trigger additional animations
+  const handleIconClick = (techName: string) => {
+    // Capture current angle for this icon based on visible layout (include exploding to keep slot)
+    const visibleForAngle = techIcons.filter((t) => {
+      const state = iconStates[t.name] ?? 'idle';
+      return state !== 'destroyed';
+    });
+    const idx = visibleForAngle.findIndex((t) => t.name === techName);
+    if (idx >= 0 && visibleForAngle.length > 0) {
+      const spacing = 360 / visibleForAngle.length;
+      const angle = idx * spacing;
+      setRemovalAngles((prev) => ({ ...prev, [techName]: angle }));
+    }
+
+    setIconStates((prev) => {
+      const current = prev[techName] ?? 'idle';
+      if (current !== 'idle') return prev;
+      return { ...prev, [techName]: 'exploding' };
+    });
+
+    // Delay removal by mili-seconds
+    setTimeout(() => {
+      setIconStates((prev) => ({ ...prev, [techName]: 'destroyed' }));
+    }, 300);
   };
 
   return (
@@ -99,49 +117,97 @@ const TechOrbit = ({ useLayoutId = false }: TechOrbitProps) => {
           transformOrigin: "50% 50%",
         }}
       >
-        {techIcons.map((tech, index) => {
-          // Calculate angle with proper spacing - add small gaps between icons
-          const totalIcons = techIcons.length;
-          const spacingAngle = 360 / totalIcons; // Even distribution
-          const angle = index * spacingAngle;
-          const radius = 150; // Distance from center
+        {(() => {
+          // Keep exploding icons in layout so gap fill is delayed by 2s
+          const visibleIcons = techIcons.filter((t) => {
+            const state = iconStates[t.name] ?? 'idle';
+            return state !== 'destroyed';
+          });
+          return visibleIcons.map((tech, index) => {
+            const totalIcons = visibleIcons.length;
+            const spacingAngle = 360 / totalIcons;
+            const angle = index * spacingAngle;
+            const radius = isMobile ? 160 : 200;
+            const state = iconStates[tech.name] ?? 'idle';
 
-          return (
-            <div
-              key={tech.name}
-              className="absolute top-1/2 left-1/2 w-12 h-12"
-              style={{
-                transform: `translate(-50%, -50%) rotate(${angle}deg) translateX(${radius}px) rotate(-${angle}deg)`,
-                transformOrigin: "50% 50%",
-              }}
-            >
-              <motion.button
-                layoutId={useLayoutId ? `tech-icon-${tech.name}` : undefined}
-                className={`w-12 h-12 rounded-lg bg-card/80 backdrop-blur-sm border border-primary/30 flex items-center justify-center shadow-glow hover:shadow-electric transition-all duration-300 ${tech.color} cursor-pointer focus:outline-none focus:ring-2 focus:ring-electric focus:ring-opacity-50`}
-                whileHover={{
-                  scale: 1.2,
-                  boxShadow: "0 0 25px hsl(var(--electric) / 0.6)",
+            return (
+              <div
+                key={tech.name}
+                className="absolute top-1/2 left-1/2 w-12 h-12"
+                style={{
+                  transform: `translate(-50%, -50%) rotate(${angle}deg) translateX(${radius}px) rotate(-${angle}deg)`,
+                  transformOrigin: "50% 50%",
                 }}
-                whileTap={{
-                  scale: 0.95,
-                }}
-                onClick={() => handleIconClick(tech.name)}
-                transition={{
-                  type: "spring",
-                  duration: 1.2,
-                  ease: [0.25, 0.46, 0.45, 0.94],
-                  layout: {
-                    duration: 1.2,
-                    ease: [0.25, 0.46, 0.45, 0.94]
-                  }
-                }}
-                title={`Click to learn more about ${tech.name}`}
               >
-                <tech.Icon className="w-6 h-6" />
-              </motion.button>
-            </div>
-          );
-        })}
+                {state === 'idle' && (
+                  <motion.button
+                    layoutId={useLayoutId ? `tech-icon-${tech.name}` : undefined}
+                    className={`w-12 h-12 rounded-lg bg-card/80 backdrop-blur-sm border border-primary/30 flex items-center justify-center shadow-glow hover:shadow-electric transition-all duration-300 ${tech.color} cursor-pointer focus:outline-none focus:ring-2 focus:ring-electric focus:ring-opacity-50`}
+                    whileHover={{
+                      scale: 1.2,
+                      boxShadow: "0 0 25px hsl(var(--electric) / 0.6)",
+                    }}
+                    whileTap={{
+                      scale: 0.95,
+                    }}
+                    onClick={() => handleIconClick(tech.name)}
+                    transition={{
+                      type: "spring",
+                      duration: 1.2,
+                      ease: [0.25, 0.46, 0.45, 0.94],
+                      layout: {
+                        duration: 1.2,
+                        ease: [0.25, 0.46, 0.45, 0.94]
+                      }
+                    }}
+                    title={`Click to learn more about ${tech.name}`}
+                  >
+                    <tech.Icon className="w-6 h-6" />
+                  </motion.button>
+                )}
+              </div>
+            );
+          });
+        })()}
+
+        {/* Explosions rendered at cached removal angles */}
+        {techIcons
+          .filter((t) => (iconStates[t.name] ?? 'idle') === 'exploding')
+          .map((tech) => {
+            const angle = removalAngles[tech.name] ?? 0;
+            const radius = isMobile ? 160 : 200;
+            return (
+              <div
+                key={`explosion-${tech.name}`}
+                className={`absolute top-1/2 left-1/2 w-12 h-12 ${tech.color}`}
+                style={{
+                  transform: `translate(-50%, -50%) rotate(${angle}deg) translateX(${radius}px) rotate(-${angle}deg)`,
+                  transformOrigin: "50% 50%",
+                }}
+              >
+                {Array.from({ length: 14 }).map((_, i, arr) => {
+                  const angleDeg = (360 / arr.length) * i + Math.random() * 20 - 10;
+                  const distance = 30 + Math.random() * 24; // px
+                  const rad = (angleDeg * Math.PI) / 180;
+                  const dx = Math.cos(rad) * distance;
+                  const dy = Math.sin(rad) * distance;
+                  const rot = -30 + Math.random() * 60;
+                  const duration = 0.6 + Math.random() * 0.4;
+                  const delay = Math.random() * 0.05;
+                  return (
+                    <motion.span
+                      key={i}
+                      className="absolute left-1/2 top-1/2"
+                      style={{ width: 6, height: 6, marginLeft: -3, marginTop: -3, borderRadius: 2, backgroundColor: 'currentColor' }}
+                      initial={{ x: 0, y: 0, opacity: 1, scale: 1, rotate: 0 }}
+                      animate={{ x: dx, y: dy, opacity: 0, scale: 0.9, rotate: rot }}
+                      transition={{ duration, delay, ease: [0.22, 1, 0.36, 1] }}
+                    />
+                  );
+                })}
+              </div>
+            );
+          })}
       </motion.div>
     </div>
   );

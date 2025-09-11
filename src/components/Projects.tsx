@@ -232,7 +232,7 @@ const Projects = () => {
                           window.open(project.githubUrl, "_blank");
                         }}
                       >
-                        <FaGithub className="mr-2" />
+                        <FaGithub className="" />
                       </Button>
 
                       {project.liveUrl && (
@@ -245,7 +245,7 @@ const Projects = () => {
                             window.open(project.liveUrl, "_blank");
                           }}
                         >
-                          <FaExternalLinkAlt className="mr-2" />
+                          <FaExternalLinkAlt className="" />
                         </Button>
                       )}
 

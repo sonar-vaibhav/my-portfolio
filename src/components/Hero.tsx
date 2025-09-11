@@ -37,20 +37,20 @@ const Hero = () => {
             transition={{ duration: 0.8 }}
           >
             <motion.h1
-              className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-6"
+              className="text-2xl sm:text-3xl lg:text-4xl font-light mb-6"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
             >
               Hello, I'm{" "}
               <br />
-              <span className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6 text-gradient">
-                Vaibhav Sonar
+              <span className="text-4xl sm:text-5xl lg:text-7xl mt-4 mb-6 text-gradient font-bitcount font-extralight">
+                VAIBHAV SONAR
               </span>
             </motion.h1>
 
             <motion.p
-              className="text-xl text-muted-foreground mb-8 text-justify"
+              className="text-xl sm:4xl text-muted-foreground mb-8 text-justify"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.4 }}
@@ -167,7 +167,7 @@ const Hero = () => {
 
           {/* Right side - Profile image with tech orbit */}
           <motion.div
-            className="flex justify-center lg:justify-end order-1 lg:order-2"
+            className="flex justify-center  order-1 lg:order-2"
             initial={{ opacity: 0, x: 50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.3 }}

@@ -43,7 +43,7 @@ const Experience = () => {
           </p>
         </motion.div>
 
-        {/* Experience Timeline */}
+        {/* Experience Timeline -ml-5 */}
         <div className="relative">
           {/* Timeline Line */}
           <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-gradient-primary"></div>
@@ -65,16 +65,16 @@ const Experience = () => {
 
               {/* Experience Card */}
               <motion.div
-                className="ml-16 w-full"
+                className="ml-12 w-full"
                 whileHover={{ scale: 1.02 }}
                 transition={{ type: "spring", bounce: 0.4 }}
               >
-                <div className="bg-card rounded-2xl p-8 tech-border hover:shadow-glow transition-all duration-300">
+                <div className="bg-card rounded-2xl p-4 sm:p-6 lg:p-8 tech-border hover:shadow-glow transition-all duration-300">
                   {/* Header */}
                   <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-4">
                     <div>
                       <h3 className="text-2xl font-bold text-primary mb-2">{exp.title}</h3>
-                      <div className="flex items-center space-x-4 text-muted-foreground">
+                      <div className="flex flex-col sm:flex-row items-start sm:items-center gap-2 sm:gap-4 text-muted-foreground">
                         <div className="flex items-center">
                           <FaBriefcase className="mr-2 text-electric" />
                           <span className="font-medium text-foreground">{exp.company}</span>

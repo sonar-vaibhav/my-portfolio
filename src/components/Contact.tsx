@@ -368,7 +368,7 @@ const Contact = () => {
 
         {/* Footer */}
         <motion.footer
-          className="mt-20 pt-8 border-t border-border text-center"
+          className="mt-10 pt-2 border-t border-border text-center"
           initial={{ opacity: 0 }}
           animate={isInView ? { opacity: 1 } : {}}
           transition={{ duration: 0.6, delay: 1 }}

@@ -2,6 +2,36 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Bitcount font is linked via <link> in index.html. Keep CSS fallback only. */
+
+/* Hero name font */
+.font-bitcount { font-family: 'Bitcount Grid Double', ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, 'Apple Color Emoji', 'Segoe UI Emoji'; }
+
+/* Subtle animated glow for hero name */
+.glow-text {
+  text-shadow:
+    0 0 6px hsl(var(--electric) / 0.55),
+    0 0 14px hsl(var(--electric) / 0.45),
+    0 0 28px hsl(var(--purple) / 0.30);
+}
+
+@keyframes glow-pulse {
+  0%, 100% {
+    text-shadow:
+      0 0 6px hsl(var(--electric) / 0.45),
+      0 0 12px hsl(var(--electric) / 0.35),
+      0 0 20px hsl(var(--purple) / 0.20);
+  }
+  50% {
+    text-shadow:
+      0 0 10px hsl(var(--electric) / 0.70),
+      0 0 22px hsl(var(--electric) / 0.60),
+      0 0 38px hsl(var(--purple) / 0.40);
+  }
+}
+
+.glow-animate { animation: glow-pulse 2.4s ease-in-out infinite; }
+
 /* Modern Developer Portfolio Design System */
 
 @layer base {
@@ -73,7 +103,8 @@
   }
 
   body {
-    @apply bg-background text-foreground font-sans antialiased;
+    @apply bg-background text-foreground antialiased;
+    font-family: 'Comfortaa', ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, 'Apple Color Emoji', 'Segoe UI Emoji';
     overflow-x: hidden;
   }
   

@@ -41,44 +41,38 @@ const About = () => {
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-          {/* Left side - Profile image with animated tech orbit */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
+          {/* Left side - About Me Description (visible on mobile too) */}
           <motion.div
-            className="hidden md:flex justify-center lg:justify-start order-2 lg:order-1"
+            className="flex justify-center lg:justify-start order-2 lg:order-1"
             initial={{ opacity: 0, x: -50 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            <SharedProfileOrbit
-              layoutId="profile-orbit"
-              useLayoutId={true}
-              size="large"
-              className="lg:mr-auto"
-              section="about"
-            />
-          </motion.div>
-
-          {/* Right side - About content and education timeline */}
-          <motion.div
-            className="space-y-8 order-1 lg:order-2"
-            initial={{ opacity: 0, x: 50 }}
-            animate={isInView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.8, delay: 0.4 }}
-          >
             {/* About Me Description */}
-            <div className="space-y-4">
+            <div className="">
               <h3 className="text-2xl font-semibold text-gradient-electric">Who I Am</h3>
-              <p className="text-lg text-muted-foreground leading-relaxed">
+              <p className="text-lg text-muted-foreground leading-relaxed text-justify">
                 I'm a passionate full-stack developer with expertise in modern web technologies.
                 I love building scalable applications that solve real-world problems and create
                 exceptional user experiences.
               </p>
-              <p className="text-lg text-muted-foreground leading-relaxed">
+              <p className="text-lg text-muted-foreground leading-relaxed text-justify">
+                
                 With a strong foundation in both frontend and backend technologies, I enjoy
                 the entire development process from concept to deployment. I'm always eager
                 to learn new technologies and improve my craft.
               </p>
             </div>
+          </motion.div>
+
+          {/* Right side - About content and education timeline */}
+          <motion.div
+            className="space-y-8 order-2 lg:order-2"
+            initial={{ opacity: 0, x: 50 }}
+            animate={isInView ? { opacity: 1, x: 0 } : {}}
+            transition={{ duration: 0.8, delay: 0.4 }}
+          >
 
             {/* Education Timeline */}
             <div>
