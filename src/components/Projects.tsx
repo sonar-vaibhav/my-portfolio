@@ -161,7 +161,7 @@ const Projects = () => {
           <h2 className="text-4xl font-bold mb-4">
             Featured <span className="text-gradient">Projects</span>
           </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+          <p className="text-lg text-muted-foreground max-w-2xl mx-auto text-justify">
             Here’s what I’ve built so far — a collection of projects that showcase my journey across diverse tech stacks. I’m constantly learning and creating, so more projects will be added soon.
           </p>
         </motion.div>

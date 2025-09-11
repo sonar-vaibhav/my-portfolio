@@ -138,7 +138,7 @@ const Contact = () => {
           <h2 className="text-4xl font-bold mb-4">
             Let's <span className="text-gradient">Connect</span>
           </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+          <p className="text-lg text-muted-foreground max-w-2xl mx-auto text-justify">
             Got a project in mind or just want to say hi? I’d love to hear from you.
           </p>
         </motion.div>
