@@ -87,7 +87,7 @@ const Skills = () => {
   ];
 
   return (
-    <section id="skills" className="min-h-screen py-20 px-4 sm:px-6 lg:px-8">
+    <section id="skills" className="min-h-screen py-14 lg:py-20 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto" ref={ref}>
         <motion.div
           className="text-center mb-16"
@@ -128,7 +128,7 @@ const Skills = () => {
           {skillCategories.map((category, categoryIndex) => (
             <motion.div
               key={category.title}
-              className="flex flex-col lg:flex-row lg:items-start gap-16"
+              className="flex flex-col lg:flex-row lg:items-start gap-6 lg:gap-16"
               initial={{ opacity: 0, y: 30 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.8, delay: categoryIndex * 0.2 }}
@@ -176,7 +176,7 @@ const Skills = () => {
                   >
                     {/* Skill Icon - This will animate from orbit position */}
                     <motion.div
-                      className={`text-4xl ${skill.color} group-hover:animate-pulse w-16 h-16 rounded-xl bg-card/80 backdrop-blur-sm border border-primary/30 flex items-center justify-center shadow-glow hover:shadow-electric transition-all duration-300`}
+                      className={`text-4xl ${skill.color} group-hover:animate-pulse p-2 lg:p-0 w-12 lg:w-16 h-12 lg:h-16 rounded-xl bg-card/80 backdrop-blur-sm border border-primary/30 flex items-center justify-center shadow-glow hover:shadow-electric transition-all duration-300`}
                       whileHover={{ scale: 1.2, rotate: 15 }}
                       transition={{ type: "spring", bounce: 0.6 }}
                     >

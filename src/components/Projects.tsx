@@ -150,7 +150,7 @@ const Projects = () => {
   ];
 
   return (
-    <section id="projects" className="min-h-screen py-20 px-4 sm:px-6 lg:px-8">
+    <section id="projects" className="min-h-screen py-14 lg:py-20 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto" ref={ref}>
         <motion.div
           className="text-center mb-16"

@@ -25,7 +25,7 @@ const About = () => {
   ];
 
   return (
-    <section id="about" className="min-h-screen py-20 px-4 sm:px-6 lg:px-8">
+    <section id="about" className="min-h-screen py-14 lg:py-20 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto" ref={ref}>
         <motion.div
           className="text-center mb-16"
@@ -51,7 +51,7 @@ const About = () => {
           >
             {/* About Me Description */}
             <div className="">
-              <h3 className="text-2xl font-semibold text-gradient-electric">Who I Am</h3>
+              <h3 className="text-2xl font-semibold text-gradient-electric pb-4">Who I Am</h3>
               <p className="text-lg text-muted-foreground leading-relaxed text-justify">
                 I'm a passionate full-stack developer with expertise in modern web technologies.
                 I love building scalable applications that solve real-world problems and create

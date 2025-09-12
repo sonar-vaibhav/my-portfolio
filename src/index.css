@@ -7,6 +7,9 @@
 /* Hero name font */
 .font-bitcount { font-family: 'Bitcount Grid Double', ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, 'Apple Color Emoji', 'Segoe UI Emoji'; }
 
+/* Logo font */
+.font-irish { font-family: 'Irish Grover', ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, 'Apple Color Emoji', 'Segoe UI Emoji'; }
+
 /* Subtle animated glow for hero name */
 .glow-text {
   text-shadow:

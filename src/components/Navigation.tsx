@@ -84,11 +84,11 @@ const Navigation = () => {
         <div className="flex items-center justify-between h-12 md:h-16">
           {/* Logo */}
           <motion.div
-            className="text-2xl font-bold text-gradient cursor-pointer"
+            className="text-3xl font-bold text-gradient cursor-pointer font-irish"
             whileHover={{ scale: 1.05 }}
             onClick={() => scrollToSection("home")}
           >
-            &lt;VS/&gt;
+            &lt; VS/&gt;
           </motion.div>
 
           {/* Navigation Links */}
@@ -141,7 +141,7 @@ const Navigation = () => {
 
         {/* Mobile dropdown */}
         <motion.div
-          className="md:hidden px-4 pb-4 pointer-events-auto relative z-[100]"
+          className="md:hidden px-4 pb-2 pointer-events-auto relative z-[100]"
           initial={false}
           animate={{ height: isMenuOpen ? "auto" : 0, opacity: isMenuOpen ? 1 : 0 }}
           style={{ overflow: "hidden" }}
