@@ -135,7 +135,7 @@ const Skills = () => {
             >
               {/* Category Title - Left side */}
               <motion.h3
-                className="text-3xl font-bold text-muted-foreground/80 lg:w-48 lg:flex-shrink-0"
+                className="text-xl lg:text-2xl font-bold text-muted-foreground/80 lg:w-48 lg:flex-shrink-0"
                 layoutId={`category-title-${category.title}`}
               >
                 {category.title}
@@ -143,7 +143,7 @@ const Skills = () => {
 
               {/* Skills Icons - Right side, arranged horizontally */}
               <motion.div
-                className="flex flex-wrap gap-6 items-center"
+                className="flex flex-wrap gap-3 lg:gap-6 items-center"
                 layoutId={`skills-row-${category.title}`}
                 transition={{
                   type: "spring",

@@ -176,7 +176,7 @@ const Hero = () => {
               layoutId="profile-orbit"
               useLayoutId={true}
               size="large"
-              className="lg:ml-auto"
+              className=""
               section="hero"
             />
           </motion.div>

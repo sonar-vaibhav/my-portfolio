@@ -1,10 +1,11 @@
 import { motion } from "framer-motion";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 
 const Navigation = () => {
   const [activeSection, setActiveSection] = useState("home");
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const navRef = useRef<HTMLElement | null>(null);
 
   const navItems = [
     { id: "home", label: "Home" },
@@ -37,16 +38,39 @@ const Navigation = () => {
   }, []);
 
   const scrollToSection = (sectionId: string) => {
-    const element = document.getElementById(sectionId);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
+    const target = document.getElementById(sectionId);
+    if (!target) return;
+
+    const performScroll = () => {
+      const navEl = navRef.current;
+      const offset = (navEl?.offsetHeight ?? 64) + 8;
+      const rect = target.getBoundingClientRect();
+      const targetY = window.scrollY + rect.top - offset;
+
+      // Temporarily disable CSS smooth scroll to prevent double-smoothing conflicts
+      const htmlEl = document.documentElement as HTMLElement;
+      const previousBehavior = htmlEl.style.scrollBehavior;
+      htmlEl.style.scrollBehavior = "auto";
+      window.scrollTo({ top: Math.max(0, targetY), behavior: "smooth" });
+      // Restore after the scroll kicks in
+      setTimeout(() => {
+        htmlEl.style.scrollBehavior = previousBehavior;
+      }, 400);
+    };
+
+    const isMobile = window.innerWidth < 768;
+    if (isMobile && isMenuOpen) {
+      setIsMenuOpen(false);
+      // Wait for menu collapse/layout to settle before measuring
+      setTimeout(performScroll, 300);
+    } else {
+      performScroll();
     }
-    setIsMenuOpen(false);
   };
 
   return (
     <motion.nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+      className={`fixed top-0 left-0 right-0 z-[100] transition-all duration-300 ${
         isScrolled
           ? "bg-background/90 backdrop-blur-lg border-b border-primary/20 shadow-glow"
           : "bg-transparent"
@@ -54,6 +78,7 @@ const Navigation = () => {
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.5 }}
+      ref={(el) => (navRef.current = el)}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-12 md:h-16">
@@ -93,9 +118,9 @@ const Navigation = () => {
           </div>
 
           {/* Mobile menu button */}
-          <div className="md:hidden">
+          <div className="md:hidden pointer-events-auto">
             <motion.button
-              className="p-2 rounded-lg hover:bg-secondary"
+              className="p-2 rounded-lg hover:bg-secondary touch-manipulation"
               whileTap={{ scale: 0.95 }}
               aria-label="Toggle menu"
               aria-expanded={isMenuOpen}
@@ -116,17 +141,17 @@ const Navigation = () => {
 
         {/* Mobile dropdown */}
         <motion.div
-          className="md:hidden px-4 pb-4"
+          className="md:hidden px-4 pb-4 pointer-events-auto relative z-[100]"
           initial={false}
           animate={{ height: isMenuOpen ? "auto" : 0, opacity: isMenuOpen ? 1 : 0 }}
           style={{ overflow: "hidden" }}
         >
-          <div className="mt-2 space-y-2 bg-background/90 backdrop-blur-lg rounded-lg border border-primary/20 p-3">
+          <div className="mt-2 space-y-2 bg-background/90 backdrop-blur-md rounded-lg border border-primary/20 p-3">
             {navItems.map((item) => (
               <button
                 key={item.id}
                 onClick={() => scrollToSection(item.id)}
-                className={`w-full text-left px-3 py-2 rounded-md transition-colors ${
+                className={`w-full text-left px-3 py-2 rounded-md transition-colors touch-manipulation ${
                   activeSection === item.id ? "bg-primary/10 text-primary" : "text-foreground hover:bg-secondary"
                 }`}
               >

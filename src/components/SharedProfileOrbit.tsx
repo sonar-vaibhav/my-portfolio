@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import TechOrbit from "./TechOrbit";
-import profileImage from "@/assets/vebs.png";
+import profileImage from "/vebs.png";
 
 interface SharedProfileOrbitProps {
     layoutId: string;

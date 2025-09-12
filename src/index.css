@@ -113,6 +113,10 @@
     overflow-x: hidden;
   }
 
+  /* Ensure anchored sections are not hidden behind fixed navbar */
+  section[id] { scroll-margin-top: 56px; }
+  @media (min-width: 768px) { section[id] { scroll-margin-top: 72px; } }
+
   /* Hide cursor only on medium screens and up (desktop/tablet) */
   @media (min-width: 768px) {
     * {
