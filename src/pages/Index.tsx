@@ -8,7 +8,8 @@ import Contact from "@/components/Contact";
 
 const Index = () => {
   return (
-    <div className="min-h-screen bg-background text-foreground">
+    <div className="relative min-h-screen">
+      {/* Site-wide themed background */}
       <Navigation />
       <Hero />
       <About />
