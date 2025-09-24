@@ -70,7 +70,7 @@ const Navigation = () => {
 
   return (
     <motion.nav
-      className={`fixed top-0 left-0 right-0 z-[100] transition-all duration-300 ${
+      className={`site-nav fixed top-0 left-0 right-0 z-[100] transition-all duration-300 ${
         isScrolled
           ? "bg-background/90 backdrop-blur-lg border-b border-primary/20 shadow-glow"
           : "bg-transparent"
@@ -88,7 +88,7 @@ const Navigation = () => {
             whileHover={{ scale: 1.05 }}
             onClick={() => scrollToSection("home")}
           >
-            &lt; VS/&gt;
+            &nbsp;VS
           </motion.div>
 
           {/* Navigation Links */}

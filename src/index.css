@@ -116,6 +116,11 @@
     overflow-x: hidden;
   }
 
+  /* Hide nav when a modal is open */
+  body.modal-open .site-nav {
+    display: none !important;
+  }
+
   /* Custom scrollbar */
   ::-webkit-scrollbar {
     width: 8px;

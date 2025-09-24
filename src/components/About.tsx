@@ -9,14 +9,14 @@ const About = () => {
 
   const educationData = [
     {
-      year: "2024-2027",
+      year: "2024 - 2027",
       degree: "Bachelor of Engineering",
       field: "Computer Engineering",
       institution: "Dr. D. Y. Patil Institute of Technology, Pimpri, Pune",
       description: "CGPA : 9.25"
     },
     {
-      year: "2021-2024",
+      year: "2021 - 2024",
       degree: "Diploma",
       field: "Computer Engineering",
       institution: "Shri Shivaji Vidya Prasarak Sanstha's B. S. Deore Polytechnic, Dhule",
@@ -95,7 +95,7 @@ const About = () => {
                         <span className="text-sm text-electric font-medium">{edu.year}</span>
                       </div>
                       <p className="text-lg text-purple mb-1">{edu.field}</p>
-                      <p className="text-muted-foreground mb-3">{edu.institution}</p>
+                      <p className="text-muted-foreground mb-3 text-sm">{edu.institution}</p>
                       <p className="text-sm text-muted-foreground">{edu.description}</p>
                     </div>
                   </motion.div>

@@ -73,7 +73,7 @@ const Experience = () => {
                   {/* Header */}
                   <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-4">
                     <div>
-                      <h3 className="text-2xl font-bold text-primary mb-2">{exp.title}</h3>
+                      <h3 className="text-xl lg:text-2xl font-bold text-primary mb-2">{exp.title}</h3>
                       <div className="flex flex-col sm:flex-row items-start sm:items-center gap-2 sm:gap-4 text-muted-foreground">
                         <div className="flex items-center">
                           <FaBriefcase className="mr-2 text-electric" />

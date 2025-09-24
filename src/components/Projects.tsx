@@ -1,6 +1,6 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { useInView } from "framer-motion";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { FaGithub, FaExternalLinkAlt, FaTimes } from "react-icons/fa";
 
@@ -46,6 +46,22 @@ const Projects = () => {
       ]
     },
     {
+      "title": "Team Envisioners Website",
+      "description": "An official website built for Team Envisioners club to showcase their vision, activities, and member information.",
+      "longDescription": "The Team Envisioners Website is a modern and responsive website developed to represent the club’s activities, objectives, and members. Designed with a clean UI using React and TailwindCSS, it highlights the club’s events, core team, and initiatives. The website integrates EmailJS for seamless contact and inquiry handling, making it easier for visitors to reach out. This project also serves as the club’s digital identity, contributing to its outreach and growth.",
+      "image": "/project-cards/team_env.png",
+      "technologies": ["React", "TailwindCSS", "EmailJS"],
+      "githubUrl": "",
+      "liveUrl": "https://team-envisioners.vercel.app/",
+      "features": [
+        "Core team and event highlight sections",
+        "Contact form with EmailJS integration",
+        "Clean UI built with React and TailwindCSS",
+        "Mobile-friendly and accessible design",
+        "Responsive website showcasing club activities and members",
+      ]
+    },
+    {
       "title": "MailCraft – AI Email Assistant",
       "description": "A Chrome extension that helps users write, rephrase, and polish emails using AI, directly inside Gmail.",
       "longDescription": "MailCraft is a productivity-focused Chrome extension that integrates AI assistance into Gmail’s compose window. It allows users to instantly rewrite subject lines and email bodies in different tones (formal, casual, persuasive) and even apply custom prompts with inline commands. Designed with a smooth UI that blends seamlessly into Gmail, MailCraft empowers professionals, students, and teams to write impactful and clear emails faster. It securely handles API key storage using Chrome Storage API, ensuring privacy while leveraging Google Gemini AI for high-quality rephrasings.",
@@ -61,93 +77,18 @@ const Projects = () => {
         "Secure API key storage using Chrome Storage API"
       ]
     }
-
-    // {
-    //   title: "Task Management App",
-    //   description: "A collaborative task management application with real-time updates",
-    //   longDescription: "A modern task management application that enables teams to collaborate effectively with real-time updates, drag-and-drop functionality, and comprehensive project tracking. Features include team management, deadline tracking, and progress visualization.",
-    //   image: "/api/placeholder/400/250",
-    //   technologies: ["Next.js", "TypeScript", "Prisma", "PostgreSQL", "Socket.io"],
-    //   githubUrl: "https://github.com/vaibhavsonar/task-manager",
-    //   liveUrl: "https://taskmanager-demo.vercel.app",
-    //   features: [
-    //     "Real-time collaboration with Socket.io",
-    //     "Drag and drop task organization",
-    //     "Team member management",
-    //     "Progress tracking and analytics",
-    //     "Deadline notifications",
-    //     "File attachments and comments"
-    //   ]
-    // },
-    // {
-    //   title: "Social Media Dashboard",
-    //   description: "Analytics dashboard for social media management",
-    //   longDescription: "A comprehensive social media analytics dashboard that aggregates data from multiple platforms, provides detailed insights, and enables content scheduling. Built with modern data visualization libraries and responsive design principles.",
-    //   image: "/api/placeholder/400/250",
-    //   technologies: ["React", "Chart.js", "Firebase", "Tailwind CSS", "API Integration"],
-    //   githubUrl: "https://github.com/vaibhavsonar/social-dashboard",
-    //   liveUrl: "https://social-dashboard-demo.vercel.app",
-    //   features: [
-    //     "Multi-platform social media integration",
-    //     "Real-time analytics and reporting",
-    //     "Content scheduling and publishing",
-    //     "Engagement metrics visualization",
-    //     "Custom dashboard widgets",
-    //     "Export reports in multiple formats"
-    //   ]
-    // },
-    // {
-    //   title: "Weather Forecast App",
-    //   description: "Beautiful weather app with location-based forecasts",
-    //   longDescription: "An elegant weather forecasting application featuring location-based weather data, 7-day forecasts, interactive maps, and beautiful animations. Utilizes geolocation API and integrates with multiple weather service providers for accurate data.",
-    //   image: "/api/placeholder/400/250",
-    //   technologies: ["React", "OpenWeather API", "Geolocation", "CSS Animations"],
-    //   githubUrl: "https://github.com/vaibhavsonar/weather-app",
-    //   liveUrl: "https://weather-forecast-demo.vercel.app",
-    //   features: [
-    //     "Location-based weather detection",
-    //     "7-day detailed forecast",
-    //     "Interactive weather maps",
-    //     "Hourly weather predictions",
-    //     "Weather alerts and notifications",
-    //     "Beautiful animated weather icons"
-    //   ]
-    // },
-    // {
-    //   title: "Portfolio Website",
-    //   description: "Personal portfolio website with modern animations",
-    //   longDescription: "A modern, fully responsive portfolio website showcasing projects, skills, and experience. Features smooth animations, interactive elements, and optimized performance. Built with cutting-edge technologies and design principles.",
-    //   image: "/api/placeholder/400/250",
-    //   technologies: ["React", "Framer Motion", "Tailwind CSS", "TypeScript"],
-    //   githubUrl: "https://github.com/vaibhavsonar/portfolio",
-    //   liveUrl: "https://vaibhavsonar.dev",
-    //   features: [
-    //     "Smooth scroll animations",
-    //     "Interactive project showcases",
-    //     "Responsive design for all devices",
-    //     "Contact form integration",
-    //     "SEO optimization",
-    //     "Fast loading performance"
-    //   ]
-    // },
-    // {
-    //   title: "Blog Platform",
-    //   description: "Full-stack blog platform with CMS functionality",
-    //   longDescription: "A complete blogging platform with content management system, user authentication, comment system, and SEO optimization. Features include rich text editor, image uploads, category management, and social sharing capabilities.",
-    //   image: "/api/placeholder/400/250",
-    //   technologies: ["Next.js", "Sanity CMS", "Vercel", "SEO", "Authentication"],
-    //   githubUrl: "https://github.com/vaibhavsonar/blog-platform",
-    //   liveUrl: "https://blog-demo.vercel.app",
-    //   features: [
-    //     "Rich text editor with media support",
-    //     "User authentication and profiles",
-    //     "Comment system with moderation",
-    //     "SEO optimization and meta tags",
-    //     "Social media sharing",
-    //     "Content categorization and tagging"
-    //   ]
-    // }
   ];
+
+  // Toggle body class to hide navbar when modal is open
+  useEffect(() => {
+    const body = document.body;
+    if (selectedProject !== null) {
+      body.classList.add("modal-open");
+    } else {
+      body.classList.remove("modal-open");
+    }
+    return () => body.classList.remove("modal-open");
+  }, [selectedProject]);
 
   return (
     <section id="projects" className="min-h-screen py-14 lg:py-20 px-4 sm:px-6 lg:px-8">
@@ -179,27 +120,27 @@ const Projects = () => {
             >
               <div className="bg-card rounded-2xl overflow-hidden tech-border hover:shadow-glow transition-all duration-300 h-full">
                 {/* Project Image */}
-                <div className="relative overflow-hidden bg-gradient-tech pb-[56.25%]">
+                <div className="relative overflow-hidden pb-[56.25%]">
                   <img
                     src={project.image}
                     alt={project.title}
                     loading="lazy"
-                    className="absolute inset-0 w-full h-full object-cover transform transition-transform duration-300 group-hover:scale-105"
+                    className="absolute inset-0 w-full h-full transform transition-transform duration-300 group-hover:scale-105"
                   />
-                  <div className="absolute inset-0 bg-gradient-primary opacity-20"></div>
-                  <motion.div
+                  {/* <div className="absolute inset-0 bg-gradient-primary opacity-20"></div> */}
+                  {/* <motion.div
                     className="absolute inset-0 bg-gradient-electric opacity-0 group-hover:opacity-30 transition-opacity duration-300"
                     whileHover={{ scale: 1.1 }}
-                  />
+                  /> */}
                 </div>
 
                 {/* Project Content */}
                 <div className="p-6">
-                  <h3 className="text-xl font-bold mb-3 text-foreground group-hover:text-primary transition-colors">
+                  <h3 className="text-[15px] lg:text-xl font-bold mb-3 text-foreground group-hover:text-primary transition-colors">
                     {project.title}
                   </h3>
 
-                  <p className="text-muted-foreground mb-4 line-clamp-3">
+                  <p className="text-sm lg:text-[15px] text-muted-foreground text-justify mb-4 line-clamp-3">
                     {project.description}
                   </p>
 
@@ -223,7 +164,7 @@ const Projects = () => {
                   {/* Action Buttons */}
                   <div className="flex items-center justify-between">
                     <div className="flex gap-3">
-                      <Button
+                      {project.githubUrl && (<Button
                         variant="secondary"
                         size="sm"
                         className="tech-border hover:bg-primary/10"
@@ -234,6 +175,7 @@ const Projects = () => {
                       >
                         <FaGithub className="" />
                       </Button>
+                      )}
 
                       {project.liveUrl && (
                         <Button
@@ -303,15 +245,16 @@ const Projects = () => {
                 {/* Modal Content */}
                 <div className="space-y-6">
                   <div>
-                    <h3 className="text-3xl font-bold text-gradient mb-4">
+                    <h3 className="text-2xl font-bold text-gradient mb-4">
                       {projects[selectedProject].title}
                     </h3>
-                    <p className="text-lg text-muted-foreground leading-relaxed text-justify">
+                    <p className="text-muted-foreground leading-relaxed text-justify">
                       {projects[selectedProject].longDescription}
                     </p>
                   </div>
 
                   {/* Features */}
+                  { projects[selectedProject].features.length > 0 && (
                   <div>
                     <h4 className="text-xl font-semibold text-gradient-electric mb-4">
                       Key Features
@@ -325,6 +268,7 @@ const Projects = () => {
                       ))}
                     </div>
                   </div>
+                  )}
 
                   {/* Technologies */}
                   <div>
@@ -344,18 +288,21 @@ const Projects = () => {
                   </div>
 
                   {/* Action Buttons */}
-                  <div className="flex gap-4 pt-4">
-                    <Button
-                      className="bg-gradient-primary hover:shadow-glow flex-1"
-                      onClick={() => window.open(projects[selectedProject].githubUrl, "_blank")}
-                    >
-                      <FaGithub className="mr-2" />
-                      View Source Code
-                    </Button>
+                  <div className="flex flex-col md:flex-row gap-3 md:gap-4 pt-4">
+                    {projects[selectedProject].githubUrl && (
+                      <Button
+                        className="bg-gradient-primary hover:shadow-glow w-full md:flex-1"
+                        onClick={() => window.open(projects[selectedProject].githubUrl, "_blank")}
+                      >
+                        <FaGithub className="mr-2" />
+                        View Source Code
+                      </Button>
+                    )}
+
                     {projects[selectedProject].liveUrl && (
                       <Button
                         variant="outline"
-                        className="tech-border hover:bg-electric/10 flex-1"
+                        className="tech-border hover:bg-electric/10 w-full md:flex-1"
                         onClick={() => window.open(projects[selectedProject].liveUrl, "_blank")}
                       >
                         <FaExternalLinkAlt className="mr-2" />
