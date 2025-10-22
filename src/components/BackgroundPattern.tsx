@@ -10,7 +10,7 @@ type Props = {
 
 // Full-viewport grid background using CSS gradients.
 // Colors are derived from the existing design tokens: --background and --border.
-const BackgroundPattern = memo(function BackgroundPattern({ className, size = 55, colorOpacity = 0.15 }: Props) {
+const BackgroundPattern = memo(function BackgroundPattern({ className, size = 75, colorOpacity = 0.20 }: Props) {
   const gridSize = `${size}px ${size}px`;
   const gridColor = `hsl(var(--border) / ${colorOpacity})`;
   return (
