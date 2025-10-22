@@ -32,7 +32,7 @@ const Projects = () => {
       "title": "Procurement Management System – DPU",
       "description": "A live project in development for Dr. D. Y. Patil Institute of Technology to manage procurement workflows.",
       "longDescription": "The Procurement Management System is an ongoing live project built for DPU’s internal operations to streamline procurement and approval workflows. It will provide modules for requisition requests, approvals, vendor management, and purchase tracking. The system is being developed with a focus on automation, efficiency, and secure role-based access to handle different stakeholders in the procurement lifecycle.",
-      "image": "/project-cards/image.png",
+      "image": "/project-cards/prcuremgt.png",
       "technologies": ["React", "TailwindCSS", ".NET"],
       "githubUrl": "https://github.com/sonar-vaibhav/dpu-procurement-portal",
       "liveUrl": "https://dpu-procurement-portal.vercel.app/",
@@ -76,7 +76,25 @@ const Projects = () => {
         "Seamless integration inside Gmail compose window",
         "Secure API key storage using Chrome Storage API"
       ]
+    },
+    {
+      "title": "OrderEase – Restaurant Order Management System",
+      "description": "A full-stack web application to manage in-house and takeaway orders for small to mid-scale restaurants.",
+      "longDescription": "OrderEase is a full-stack restaurant order management platform that streamlines in-house and takeaway orders. It features real-time order tracking, a mobile-responsive customer interface, unique Order ID generation, secure payment integration with Razorpay, and a restaurant dashboard for monitoring order status and analyzing order flow. Built with React, Node.js, Express.js, MongoDB, and Tailwind CSS.",
+      "image": "/project-cards/order-ease.png",
+      "technologies": ["React", "Node.js", "Express.js", "MongoDB", "Tailwind CSS", "Razorpay API"],
+      "githubUrl": "https://github.com/sonar-vaibhav/order-ease",
+      "liveUrl": "https://order-ease-i1t7.onrender.com/",
+      "features": [
+        "Full-stack order management for small to mid-scale restaurants",
+        "Mobile-responsive customer interface",
+        "Real-time order tracking and status updates",
+        "Unique Order ID generation for each order",
+        "Secure payment integration with Razorpay",
+        "Restaurant dashboard for monitoring orders and flow analysis"
+      ]
     }
+
   ];
 
   // Toggle body class to hide navbar when modal is open
@@ -254,20 +272,20 @@ const Projects = () => {
                   </div>
 
                   {/* Features */}
-                  { projects[selectedProject].features.length > 0 && (
-                  <div>
-                    <h4 className="text-xl font-semibold text-gradient-electric mb-4">
-                      Key Features
-                    </h4>
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-                      {projects[selectedProject].features.map((feature, featureIndex) => (
-                        <div key={featureIndex} className="flex items-start">
-                          <div className="w-2 h-2 bg-gradient-primary rounded-full mt-2 mr-3 flex-shrink-0"></div>
-                          <span className="text-muted-foreground">{feature}</span>
-                        </div>
-                      ))}
+                  {projects[selectedProject].features.length > 0 && (
+                    <div>
+                      <h4 className="text-xl font-semibold text-gradient-electric mb-4">
+                        Key Features
+                      </h4>
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                        {projects[selectedProject].features.map((feature, featureIndex) => (
+                          <div key={featureIndex} className="flex items-start">
+                            <div className="w-2 h-2 bg-gradient-primary rounded-full mt-2 mr-3 flex-shrink-0"></div>
+                            <span className="text-muted-foreground">{feature}</span>
+                          </div>
+                        ))}
+                      </div>
                     </div>
-                  </div>
                   )}
 
                   {/* Technologies */}

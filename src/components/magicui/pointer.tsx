@@ -10,7 +10,7 @@ interface PointerProps {
     image?: string; // allow passing image path
 }
 
-export function Pointer({ children, className, image = "/image.png" }: PointerProps) {
+export function Pointer({ children, className, image = "/pointer.png" }: PointerProps) {
     const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
     const [isHovering, setIsHovering] = useState(false);
     const [isMobile, setIsMobile] = useState(false);

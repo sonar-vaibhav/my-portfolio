@@ -11,14 +11,14 @@ const Experience = () => {
     {
       title: "Web Development Intern",
       company: "Sumago Infotech Pvt. Ltd.",
-      location: "Nashik, India",
+      location: "Nashik, Maharashtra, India",
       period: "June 2024 - July 2024",
       type: "Remote",
       // description: "Leading development of scalable web applications using React, Node.js, and cloud technologies. Mentoring junior developers and implementing best practices.",
       achievements: [
         "Acquired hands-on experience in front-end & back-end development using HTML, CSS, JavaScript, PHP, MySQL, and React.js.",
         "Built interactive and responsive UI components using HTML, CSS, JavaScript.",
-        "Optimized website rendering time by 30%, enhancing performance and user experience.",
+        "Optimized website rendering time, enhanced performance and user experience.",
         "Collaborated with developers to understand best coding practices, version control (Git), and debugging techniques."
       ],
       technologies: ["HTML", "CSS", "JavaScript", "PHP", "MySQL", "React.js"]
