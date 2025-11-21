@@ -83,13 +83,14 @@ const Navigation = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-12 md:h-16">
           {/* Logo */}
-          <motion.div
+          <motion.button
             className="text-3xl font-bold text-gradient cursor-pointer font-irish"
             whileHover={{ scale: 1.05 }}
             onClick={() => scrollToSection("home")}
+            aria-label="Navigate to home section"
           >
             &nbsp;VS
-          </motion.div>
+          </motion.button>
 
           {/* Navigation Links */}
           <div className="hidden md:flex items-center space-x-8">
@@ -97,6 +98,7 @@ const Navigation = () => {
               <motion.button
                 key={item.id}
                 onClick={() => scrollToSection(item.id)}
+                aria-label={`Navigate to ${item.label} section`}
                 className={`relative px-3 py-2 text-sm font-medium transition-colors duration-200 ${
                   activeSection === item.id
                     ? "text-primary"
@@ -151,6 +153,7 @@ const Navigation = () => {
               <button
                 key={item.id}
                 onClick={() => scrollToSection(item.id)}
+                aria-label={`Navigate to ${item.label} section`}
                 className={`w-full text-left px-3 py-2 rounded-md transition-colors touch-manipulation ${
                   activeSection === item.id ? "bg-primary/10 text-primary" : "text-foreground hover:bg-secondary"
                 }`}

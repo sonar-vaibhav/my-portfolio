@@ -186,9 +186,10 @@ const Projects = () => {
                         variant="secondary"
                         size="sm"
                         className="tech-border hover:bg-primary/10"
+                        aria-label={`View ${project.title} source code on GitHub`}
                         onClick={(e) => {
                           e.stopPropagation();
-                          window.open(project.githubUrl, "_blank");
+                          window.open(project.githubUrl, "_blank", "noopener,noreferrer");
                         }}
                       >
                         <FaGithub className="" />
@@ -200,9 +201,10 @@ const Projects = () => {
                           variant="secondary"
                           size="sm"
                           className="tech-border hover:bg-electric/10"
+                          aria-label={`View ${project.title} live demo`}
                           onClick={(e) => {
                             e.stopPropagation();
-                            window.open(project.liveUrl, "_blank");
+                            window.open(project.liveUrl, "_blank", "noopener,noreferrer");
                           }}
                         >
                           <FaExternalLinkAlt className="" />
@@ -215,6 +217,7 @@ const Projects = () => {
                       variant="default"
                       size="sm"
                       className="bg-gradient-primary hover:shadow-glow"
+                      aria-label={`View details for ${project.title}`}
                       onClick={() => setSelectedProject(index)}
                     >
                       View Details
@@ -255,6 +258,7 @@ const Projects = () => {
                 {/* Close Button */}
                 <button
                   className="absolute top-4 right-4 p-2 hover:bg-secondary rounded-lg transition-colors"
+                  aria-label="Close project details modal"
                   onClick={() => setSelectedProject(null)}
                 >
                   <FaTimes className="text-xl" />
@@ -310,7 +314,8 @@ const Projects = () => {
                     {projects[selectedProject].githubUrl && (
                       <Button
                         className="bg-gradient-primary hover:shadow-glow w-full md:flex-1"
-                        onClick={() => window.open(projects[selectedProject].githubUrl, "_blank")}
+                        aria-label={`View ${projects[selectedProject].title} source code on GitHub`}
+                        onClick={() => window.open(projects[selectedProject].githubUrl, "_blank", "noopener,noreferrer")}
                       >
                         <FaGithub className="mr-2" />
                         View Source Code
@@ -321,7 +326,8 @@ const Projects = () => {
                       <Button
                         variant="outline"
                         className="tech-border hover:bg-electric/10 w-full md:flex-1"
-                        onClick={() => window.open(projects[selectedProject].liveUrl, "_blank")}
+                        aria-label={`View ${projects[selectedProject].title} live demo`}
+                        onClick={() => window.open(projects[selectedProject].liveUrl, "_blank", "noopener,noreferrer")}
                       >
                         <FaExternalLinkAlt className="mr-2" />
                         Live Demo
