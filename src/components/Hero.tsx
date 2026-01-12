@@ -31,19 +31,21 @@ const Hero = () => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           {/* Left side - Text content */}
           <motion.div
-            className="text-center lg:text-left order-2 lg:order-1"
+            className="text-center lg:text-left order-2 lg:order-1 text-2xl sm:text-3xl lg:text-4xl font-light"
             initial={{ opacity: 0, x: -50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
           >
+            Hello, I'm
             <motion.h1
               className="text-2xl sm:text-3xl lg:text-4xl font-light mb-6"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
             >
+
               <span className="text-4xl sm:text-5xl lg:text-7xl mt-4 mb-6 text-gradient font-bitcount font-extralight">
-                Vaibhav Sonar – Full-Stack Developer
+                VAIBHAV SONAR
               </span>
             </motion.h1>
 

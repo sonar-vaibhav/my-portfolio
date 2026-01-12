@@ -93,8 +93,58 @@ const Projects = () => {
         "Secure payment integration with Razorpay",
         "Restaurant dashboard for monitoring orders and flow analysis"
       ]
-    }
-
+    },
+    {
+      "title": "DhanSarthi – AI-Powered Personal Finance Mentor",
+      "description": "An AI-driven personal finance application that helps users manage expenses, loans, savings goals, and tax planning with smart insights.",
+      "longDescription": "DhanSarthi is an AI-powered personal finance platform designed for young earners to track expenses, analyze loans, plan savings goals, and receive tax-saving guidance. The system combines structured financial data with an AI mentor that provides personalized insights using contextual memory. Users can manage daily expenses through a calendar view, monitor EMIs and loan risks, track savings goals with progress updates, and get intelligent nudges for better money habits.",
+      "image": "/project-cards/dhansarthi.png",
+      "technologies": [
+        "React",
+        "Node.js",
+        "Express.js",
+        "MongoDB",
+        "Gemini API"
+      ],
+      "githubUrl": "https://github.com/sonar-vaibhav/dhansarthi",
+      "liveUrl": "",
+      "features": [
+        "Calendar-based expense and income tracking",
+        "Loan analyzer with EMI tracking and risk assessment",
+        "Savings goal planning with dynamic progress updates",
+        "Personalized tax-saving tips based on income and behavior",
+        "AI-powered financial mentor with contextual memory",
+        "Monthly budgets with overspending alerts",
+      ]
+    },
+    // {
+    //   "title": "CTAI Hackathon's Project– AI-Based Construction Procurement & Planning System",
+    //   "description": "An AI-powered procurement and planning platform for construction projects that predicts material requirements, identifies vendors, and aligns procurement with project schedules.",
+    //   "longDescription": "SmartBuy is an AI-driven construction procurement management system designed for general contractors and project managers. The platform takes project parameters such as project type, size, region, and volume as input to predict required construction materials, quantities, and estimated costs using machine learning. It identifies relevant vendors through web scraping, generates a procurement timeline based on lead times, and integrates it with a synthetic construction project schedule. The system also includes vendor management, payment and delivery tracking, and a project-specific AI chatbot for intelligent decision support.",
+    //   "image": "/project-cards/smartbuy.png",
+    //   "technologies": [
+    //     "React",
+    //     "FastAPI",
+    //     "Python",
+    //     "Machine Learning",
+    //     "Web Scraping",
+    //     "SQLite",
+    //     "REST APIs",
+    //     "Chart.js"
+    //   ],
+    //   "githubUrl": "",
+    //   "liveUrl": "",
+    //   "features": [
+    //     "AI-based prediction of construction materials, quantities, and costs",
+    //     "Project-wise input management (type, size, region, volume)",
+    //     "Vendor identification using real-world web scraping",
+    //     "Procurement timeline generation with lead-time analysis",
+    //     "Integrated construction project schedule visualization",
+    //     "Vendor finalization with payment and delivery tracking",
+    //     "Project-specific AI chatbot with isolated context per project",
+    //     "Interactive dashboards with tables and charts for insights"
+    //   ]
+    // }
   ];
 
   // Toggle body class to hide navbar when modal is open
