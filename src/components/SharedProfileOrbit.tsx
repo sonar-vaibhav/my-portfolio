@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import TechOrbit from "./TechOrbit";
-import profileImage from "/vebs.png";
+import profileImage from "/vebs.jpg";
 
 interface SharedProfileOrbitProps {
     layoutId: string;
@@ -42,11 +42,10 @@ const SharedProfileOrbit = ({
                 transition={{ type: "spring", bounce: 0.4, duration: 0.6 }}
             >
                 <div
-                    className={`${imageSize} ${borderRadius} overflow-hidden ${
-                        isLarge
+                    className={`${imageSize} ${borderRadius} overflow-hidden ${isLarge
                             ? "shadow-glow ring-4 ring-primary/30"
                             : "shadow-purple ring-4 ring-purple/30"
-                    } ${imageClassName}`}
+                        } ${imageClassName}`}
                 >
                     <img
                         src={profileImage}

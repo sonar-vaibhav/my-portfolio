@@ -13,7 +13,7 @@ const About = () => {
       degree: "Bachelor of Engineering",
       field: "Computer Engineering",
       institution: "Dr. D. Y. Patil Institute of Technology, Pimpri, Pune",
-      description: "CGPA : 9.25"
+      description: "CGPA : 9.33"
     },
     {
       year: "2021 - 2024",
@@ -58,7 +58,7 @@ const About = () => {
                 exceptional user experiences.
               </p>
               <p className="text-lg text-muted-foreground leading-relaxed text-justify">
-                
+
                 With a strong foundation in both frontend and backend technologies, I enjoy
                 the entire development process from concept to deployment. I'm always eager
                 to learn new technologies and improve my craft.

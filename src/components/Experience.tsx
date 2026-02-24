@@ -18,8 +18,7 @@ const Experience = () => {
       achievements: [
         "Acquired hands-on experience in front-end & back-end development using HTML, CSS, JavaScript, PHP, MySQL, and React.js.",
         "Built interactive and responsive UI components using HTML, CSS, JavaScript.",
-        "Optimized website rendering time, enhanced performance and user experience.",
-        "Collaborated with developers to understand best coding practices, version control (Git), and debugging techniques."
+        "Improved my understanding of GitHub, debugging, and working in a team environment"
       ],
       technologies: ["HTML", "CSS", "JavaScript", "PHP", "MySQL", "React.js"]
     },
