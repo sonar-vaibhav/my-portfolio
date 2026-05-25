@@ -19,7 +19,7 @@ const About = () => {
       year: "2021 - 2024",
       degree: "Diploma",
       field: "Computer Engineering",
-      institution: "Shri Shivaji Vidya Prasarak Sanstha's B. S. Deore Polytechnic, Dhule",
+      institution: "SSVPS B.S. Deore Polytechnic, Dhule",
       description: "Percentage : 92.86%"
     }
   ];
@@ -53,15 +53,10 @@ const About = () => {
             <div className="">
               <h3 className="text-2xl font-semibold text-gradient-electric pb-4">Who I Am</h3>
               <p className="text-lg text-muted-foreground leading-relaxed text-justify">
-                I'm a passionate full-stack developer with expertise in modern web technologies.
-                I love building scalable applications that solve real-world problems and create
-                exceptional user experiences.
+                I'm a Computer Engineering student at Dr. D. Y. Patil Institute of Technology with hands-on experience across the full stack. My projects range from an AI Chrome extension (MailCraft) used inside Gmail to a procurement system built for university operations.
               </p>
               <p className="text-lg text-muted-foreground leading-relaxed text-justify">
-
-                With a strong foundation in both frontend and backend technologies, I enjoy
-                the entire development process from concept to deployment. I'm always eager
-                to learn new technologies and improve my craft.
+                I work with React, Node.js, PHP, MongoDB, and more — building things that actually get used. Whether it's a rental platform serving students or a finance mentor powered by Gemini AI, I focus on practical solutions over flashy tech. <a href="/projects" className="text-electric hover:underline">See my recent projects</a>.
               </p>
             </div>
           </motion.div>

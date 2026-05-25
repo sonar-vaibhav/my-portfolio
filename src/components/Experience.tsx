@@ -38,7 +38,7 @@ const Experience = () => {
             Professional <span className="text-gradient">Experience</span>
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            My journey as a developer and the milestones I've achieved
+            My journey as a developer and the milestones I've achieved. <a href="/projects" className="text-electric hover:underline">View the projects I've worked on</a>.
           </p>
         </motion.div>
 
