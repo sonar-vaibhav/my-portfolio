@@ -14,35 +14,34 @@ const Experience = () => {
       location: "Nashik, Maharashtra, India",
       period: "June 2024 - July 2024",
       type: "Remote",
-      // description: "Leading development of scalable web applications using React, Node.js, and cloud technologies. Mentoring junior developers and implementing best practices.",
-      achievements: [
-        "Acquired hands-on experience in front-end & back-end development using HTML, CSS, JavaScript, PHP, MySQL, and React.js.",
-        "Built interactive and responsive UI components using HTML, CSS, JavaScript.",
-        "Improved my understanding of GitHub, debugging, and working in a team environment"
+      contributions: [
+        "Worked across front-end and back-end using HTML, CSS, JavaScript, PHP, MySQL, and React.js.",
+        "Built interactive, responsive UI components and improved my understanding of real-world development workflows.",
+        "Gained hands-on experience with GitHub, debugging, and collaborating in a team environment."
       ],
       technologies: ["HTML", "CSS", "JavaScript", "PHP", "MySQL", "React.js"]
     },
-
   ];
 
   return (
     <section id="experience" className="min-h-screen py-14 lg:py-20 px-4 sm:px-6 lg:px-8">
       <div className="max-w-4xl mx-auto" ref={ref}>
         <motion.div
-          className="text-center mb-16"
+          className="mb-16"
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
         >
+          <p className="text-sm font-medium text-electric uppercase tracking-widest mb-2">Where I've Contributed</p>
           <h2 className="text-4xl font-bold mb-4">
-            Professional <span className="text-gradient">Experience</span>
+            Experience & <span className="text-gradient">contribution</span>
           </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            My journey as a developer and the milestones I've achieved. <a href="/projects" className="text-electric hover:underline">View the projects I've worked on</a>.
+          <p className="text-lg text-muted-foreground max-w-2xl">
+            Roles where I've learned by doing — building, debugging, and shipping real work.
           </p>
         </motion.div>
 
-        {/* Experience Timeline -ml-5 */}
+        {/* Experience Timeline */}
         <div className="relative">
           {/* Timeline Line */}
           <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-gradient-primary"></div>
@@ -95,10 +94,26 @@ const Experience = () => {
                     </div>
                   </div>
 
-                  {/* Description */}
-                  {/* <p className="text-muted-foreground mb-6 leading-relaxed">
-                    {exp.description}
-                  </p> */}
+                  {/* What I Worked On */}
+                  <div className="mb-6 pt-4">
+                    <h4 className="text-lg font-semibold text-gradient-electric mb-3">
+                      What I Worked On
+                    </h4>
+                    <ul className="space-y-2">
+                      {exp.contributions.map((contribution, achIndex) => (
+                        <motion.li
+                          key={achIndex}
+                          className="flex items-start"
+                          initial={{ opacity: 0, x: -20 }}
+                          animate={isInView ? { opacity: 1, x: 0 } : {}}
+                          transition={{ duration: 0.5, delay: index * 0.3 + achIndex * 0.1 }}
+                        >
+                          <div className="w-2 h-2 bg-gradient-primary rounded-full mt-2 mr-3 flex-shrink-0"></div>
+                          <span className="text-muted-foreground">{contribution}</span>
+                        </motion.li>
+                      ))}
+                    </ul>
+                  </div>
 
                   {/* Technologies */}
                   <div>
@@ -123,30 +138,6 @@ const Experience = () => {
                       ))}
                     </div>
                   </div>
-
-
-                  {/* Achievements */}
-                  <div className="mb-6 pt-4">
-                    <h4 className="text-lg font-semibold text-gradient-electric mb-3">
-                      Key Achievements
-                    </h4>
-                    <ul className="space-y-2">
-                      {exp.achievements.map((achievement, achIndex) => (
-                        <motion.li
-                          key={achIndex}
-                          className="flex items-start"
-                          initial={{ opacity: 0, x: -20 }}
-                          animate={isInView ? { opacity: 1, x: 0 } : {}}
-                          transition={{ duration: 0.5, delay: index * 0.3 + achIndex * 0.1 }}
-                        >
-                          <div className="w-2 h-2 bg-gradient-primary rounded-full mt-2 mr-3 flex-shrink-0"></div>
-                          <span className="text-muted-foreground">{achievement}</span>
-                        </motion.li>
-                      ))}
-                    </ul>
-                  </div>
-
-
                 </div>
               </motion.div>
             </motion.div>

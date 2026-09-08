@@ -1,7 +1,6 @@
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
-import SharedProfileOrbit from "./SharedProfileOrbit";
 
 const About = () => {
   const ref = useRef(null);
@@ -28,50 +27,50 @@ const About = () => {
     <section id="about" className="min-h-screen py-14 lg:py-20 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto" ref={ref}>
         <motion.div
-          className="text-center mb-16"
+          className="mb-16"
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
         >
-          <h2 className="text-4xl font-bold mb-4">
-            About <span className="text-gradient">Me</span>
+          <p className="text-sm font-medium text-electric uppercase tracking-widest mb-2">Who I Am</p>
+          <h2 className="text-4xl font-bold">
+            The person behind <span className="text-gradient">the work</span>
           </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Passionate developer with a love for creating innovative solutions
-          </p>
         </motion.div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
-          {/* Left side - About Me Description (visible on mobile too) */}
+          {/* Left side - About Me Description */}
           <motion.div
-            className="flex justify-center lg:justify-start order-2 lg:order-1"
+            className="order-2 lg:order-1"
             initial={{ opacity: 0, x: -50 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            {/* About Me Description */}
-            <div className="">
-              <h3 className="text-2xl font-semibold text-gradient-electric pb-4">Who I Am</h3>
-              <p className="text-lg text-muted-foreground leading-relaxed text-justify">
-                I'm a Computer Engineering student at Dr. D. Y. Patil Institute of Technology with hands-on experience across the full stack. My projects range from an AI Chrome extension (MailCraft) used inside Gmail to a procurement system built for university operations.
+            <div className="space-y-5">
+              <p className="text-lg text-muted-foreground leading-relaxed">
+                I'm a Computer Engineering student and full-stack developer who <span className="text-foreground font-medium">learns by building</span>.
               </p>
-              <p className="text-lg text-muted-foreground leading-relaxed text-justify">
-                I work with React, Node.js, PHP, MongoDB, and more — building things that actually get used. Whether it's a rental platform serving students or a finance mentor powered by Gemini AI, I focus on practical solutions over flashy tech. <a href="/projects" className="text-electric hover:underline">See my recent projects</a>.
+              <p className="text-lg text-muted-foreground leading-relaxed">
+                I enjoy taking an idea, breaking down the problem, and turning it into something functional — from web applications and dashboards to AI-powered experiments.
+              </p>
+              <p className="text-lg text-muted-foreground leading-relaxed">
+                Most of my learning happens while building real projects, participating in hackathons, collaborating with teams, and exploring technologies beyond what I'm already comfortable with.
+              </p>
+              <p className="text-base text-muted-foreground/70 leading-relaxed italic border-l-2 border-primary/30 pl-4">
+                Built, not just studied.
               </p>
             </div>
           </motion.div>
 
-          {/* Right side - About content and education timeline */}
+          {/* Right side - Education Timeline */}
           <motion.div
-            className="space-y-8 order-2 lg:order-2"
+            className="order-1 lg:order-2"
             initial={{ opacity: 0, x: 50 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.8, delay: 0.4 }}
           >
-
-            {/* Education Timeline */}
             <div>
-              <h3 className="text-2xl font-semibold text-gradient mb-6">Education</h3>
+              <h3 className="text-xl font-semibold text-muted-foreground/80 uppercase tracking-wide mb-6">Education</h3>
               <div className="space-y-6">
                 {educationData.map((edu, index) => (
                   <motion.div

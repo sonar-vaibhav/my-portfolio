@@ -1,278 +1,158 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { useInView } from "framer-motion";
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { FaGithub, FaExternalLinkAlt, FaTimes } from "react-icons/fa";
+import { projects, type Project } from "@/data/projects";
+
+const tagColors: Record<string, string> = {
+  PERSONAL: "text-electric border-electric/30 bg-electric/10",
+  HACKATHON: "text-purple border-purple/30 bg-purple/10",
+  "REAL-WORLD": "text-green border-green/30 bg-green/10",
+  COLLABORATION: "text-primary border-primary/30 bg-primary/10",
+  CLIENT: "text-orange-500 border-orange-500/30 bg-orange-500/10",
+  COLLEGE: "text-blue-400 border-blue-400/30 bg-blue-400/10",
+  EXPERIMENT: "text-pink-400 border-pink-400/30 bg-pink-400/10",
+  AI: "text-electric border-electric/30 bg-electric/10",
+  FINTECH: "text-green border-green/30 bg-green/10",
+  "FULL-STACK": "text-primary border-primary/30 bg-primary/10",
+};
 
 const Projects = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
   const [selectedProject, setSelectedProject] = useState<number | null>(null);
 
-  const projects = [
-    {
-      "title": "EZRooms – Rental Accommodation System",
-      "description": "A full-stack web application for students and property managers to find and manage rental accommodations.",
-      "longDescription": "EZRooms is a full-stack rental accommodation platform tailored for students and property managers. It includes real-time room availability, user authentication, role-based access, admin dashboard, property search with filters, review and rating system, favorites, and reporting feature. Integrated with Google Maps API for location-based property searches. Backend optimized with PHP & MySQL for scalable and efficient data management.",
-      "image": "/project-cards/ezrooms.png",
-      "technologies": ["HTML", "CSS", "JavaScript", "Bootstrap", "PHP", "MySQL"],
-      "githubUrl": "https://github.com/sonar-vaibhav/rental-accommodation-system",
-      "liveUrl": "",
-      "features": [
-        "Role-based access control for students, owners, and admins",
-        "User authentication and profile management",
-        "Admin dashboard with reporting system",
-        "Property search with advanced filters",
-        "Reviews and ratings for rooms and managers",
-        "Favorite room bookmarking",
-        "Google Maps API integration"
-      ]
-    },
-    {
-      "title": "Procurement Management System – DPU",
-      "description": "A live project in development for Dr. D. Y. Patil Institute of Technology to manage procurement workflows.",
-      "longDescription": "The Procurement Management System is an ongoing live project built for DPU’s internal operations to streamline procurement and approval workflows. It will provide modules for requisition requests, approvals, vendor management, and purchase tracking. The system is being developed with a focus on automation, efficiency, and secure role-based access to handle different stakeholders in the procurement lifecycle.",
-      "image": "/project-cards/prcuremgt.png",
-      "technologies": ["React", "TailwindCSS", ".NET"],
-      "githubUrl": "https://github.com/sonar-vaibhav/dpu-procurement-portal",
-      "liveUrl": "https://dpu-procurement-portal.vercel.app/",
-      "features": [
-        "Role-based user access for staff, faculty, and admins",
-        "Requisition request and approval workflow",
-        "Vendor and purchase order management",
-        "Tracking and auditing of procurement lifecycle",
-        "Responsive UI with TailwindCSS",
-        "Secure backend API powered by .NET (under development)"
-      ]
-    },
-    {
-      "title": "Team Envisioners Website",
-      "description": "An official website built for Team Envisioners club to showcase their vision, activities, and member information.",
-      "longDescription": "The Team Envisioners Website is a modern and responsive website developed to represent the club’s activities, objectives, and members. Designed with a clean UI using React and TailwindCSS, it highlights the club’s events, core team, and initiatives. The website integrates EmailJS for seamless contact and inquiry handling, making it easier for visitors to reach out. This project also serves as the club’s digital identity, contributing to its outreach and growth.",
-      "image": "/project-cards/team_env.png",
-      "technologies": ["React", "TailwindCSS", "EmailJS"],
-      "githubUrl": "",
-      "liveUrl": "https://team-envisioners.vercel.app/",
-      "features": [
-        "Core team and event highlight sections",
-        "Contact form with EmailJS integration",
-        "Clean UI built with React and TailwindCSS",
-        "Mobile-friendly and accessible design",
-        "Responsive website showcasing club activities and members",
-      ]
-    },
-    {
-      "title": "MailCraft – AI Email Assistant",
-      "description": "A Chrome extension that helps users write, rephrase, and polish emails using AI, directly inside Gmail.",
-      "longDescription": "MailCraft is a productivity-focused Chrome extension that integrates AI assistance into Gmail’s compose window. It allows users to instantly rewrite subject lines and email bodies in different tones (formal, casual, persuasive) and even apply custom prompts with inline commands. Designed with a smooth UI that blends seamlessly into Gmail, MailCraft empowers professionals, students, and teams to write impactful and clear emails faster. It securely handles API key storage using Chrome Storage API, ensuring privacy while leveraging Google Gemini AI for high-quality rephrasings.",
-      "image": "/project-cards/mailcraft.png",
-      "technologies": ["HTML", "CSS", "JavaScript", "Chrome Extensions API", "Google Gemini AI"],
-      "githubUrl": "https://github.com/sonar-vaibhav/mailcraft-ai",
-      "liveUrl": "",
-      "features": [
-        "AI-powered rewriting of email subject and body in real-time",
-        "Tone selection dropdown (formal, casual, persuasive)",
-        "Custom inline prompts with !@# syntax",
-        "Seamless integration inside Gmail compose window",
-        "Secure API key storage using Chrome Storage API"
-      ]
-    },
-    {
-      "title": "OrderEase – Restaurant Order Management System",
-      "description": "A full-stack web application to manage in-house and takeaway orders for small to mid-scale restaurants.",
-      "longDescription": "OrderEase is a full-stack restaurant order management platform that streamlines in-house and takeaway orders. It features real-time order tracking, a mobile-responsive customer interface, unique Order ID generation, secure payment integration with Razorpay, and a restaurant dashboard for monitoring order status and analyzing order flow. Built with React, Node.js, Express.js, MongoDB, and Tailwind CSS.",
-      "image": "/project-cards/order-ease.png",
-      "technologies": ["React", "Node.js", "Express.js", "MongoDB", "Tailwind CSS", "Razorpay API"],
-      "githubUrl": "https://github.com/sonar-vaibhav/order-ease",
-      "liveUrl": "https://order-ease-i1t7.onrender.com/",
-      "features": [
-        "Full-stack order management for small to mid-scale restaurants",
-        "Mobile-responsive customer interface",
-        "Real-time order tracking and status updates",
-        "Unique Order ID generation for each order",
-        "Secure payment integration with Razorpay",
-        "Restaurant dashboard for monitoring orders and flow analysis"
-      ]
-    },
-    {
-      "title": "DhanSarthi – AI-Powered Personal Finance Mentor",
-      "description": "An AI-driven personal finance application that helps users manage expenses, loans, savings goals, and tax planning with smart insights.",
-      "longDescription": "DhanSarthi is an AI-powered personal finance platform designed for young earners to track expenses, analyze loans, plan savings goals, and receive tax-saving guidance. The system combines structured financial data with an AI mentor that provides personalized insights using contextual memory. Users can manage daily expenses through a calendar view, monitor EMIs and loan risks, track savings goals with progress updates, and get intelligent nudges for better money habits.",
-      "image": "/project-cards/dhansarthi.png",
-      "technologies": [
-        "React",
-        "Node.js",
-        "Express.js",
-        "MongoDB",
-        "Gemini API"
-      ],
-      "githubUrl": "https://github.com/sonar-vaibhav/dhansarthi",
-      "liveUrl": "",
-      "features": [
-        "Calendar-based expense and income tracking",
-        "Loan analyzer with EMI tracking and risk assessment",
-        "Savings goal planning with dynamic progress updates",
-        "Personalized tax-saving tips based on income and behavior",
-        "AI-powered financial mentor with contextual memory",
-        "Monthly budgets with overspending alerts",
-      ]
-    },
-    // {
-    //   "title": "CTAI Hackathon's Project– AI-Based Construction Procurement & Planning System",
-    //   "description": "An AI-powered procurement and planning platform for construction projects that predicts material requirements, identifies vendors, and aligns procurement with project schedules.",
-    //   "longDescription": "SmartBuy is an AI-driven construction procurement management system designed for general contractors and project managers. The platform takes project parameters such as project type, size, region, and volume as input to predict required construction materials, quantities, and estimated costs using machine learning. It identifies relevant vendors through web scraping, generates a procurement timeline based on lead times, and integrates it with a synthetic construction project schedule. The system also includes vendor management, payment and delivery tracking, and a project-specific AI chatbot for intelligent decision support.",
-    //   "image": "/project-cards/smartbuy.png",
-    //   "technologies": [
-    //     "React",
-    //     "FastAPI",
-    //     "Python",
-    //     "Machine Learning",
-    //     "Web Scraping",
-    //     "SQLite",
-    //     "REST APIs",
-    //     "Chart.js"
-    //   ],
-    //   "githubUrl": "",
-    //   "liveUrl": "",
-    //   "features": [
-    //     "AI-based prediction of construction materials, quantities, and costs",
-    //     "Project-wise input management (type, size, region, volume)",
-    //     "Vendor identification using real-world web scraping",
-    //     "Procurement timeline generation with lead-time analysis",
-    //     "Integrated construction project schedule visualization",
-    //     "Vendor finalization with payment and delivery tracking",
-    //     "Project-specific AI chatbot with isolated context per project",
-    //     "Interactive dashboards with tables and charts for insights"
-    //   ]
-    // }
-  ];
-
-  // Toggle body class to hide navbar when modal is open
   useEffect(() => {
-    const body = document.body;
     if (selectedProject !== null) {
-      body.classList.add("modal-open");
+      document.body.classList.add("modal-open");
     } else {
-      body.classList.remove("modal-open");
+      document.body.classList.remove("modal-open");
     }
-    return () => body.classList.remove("modal-open");
+    return () => document.body.classList.remove("modal-open");
   }, [selectedProject]);
+
+  const project = selectedProject !== null ? projects[selectedProject] : null;
 
   return (
     <section id="projects" className="min-h-screen py-14 lg:py-20 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto" ref={ref}>
         <motion.div
-          className="text-center mb-16"
+          className="mb-16"
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
         >
+          <p className="text-sm font-medium text-electric uppercase tracking-widest mb-2">What I've Built</p>
           <h2 className="text-4xl font-bold mb-4">
-            Featured <span className="text-gradient">Projects</span>
+            Things I've <span className="text-gradient">built</span>
           </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto text-justify">
-            Here’s what I’ve built so far — a collection of projects that showcase my journey across diverse tech stacks. I’m constantly learning and creating, so more projects will be added soon.
+          <p className="text-lg text-muted-foreground max-w-2xl">
+            Here's what I've built so far — a collection of projects across different technologies, problems, and ideas. More are always on the way.
           </p>
         </motion.div>
 
-        {/* Projects Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {projects.map((project, index) => (
+        {/* Project Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+          {projects.map((p, index) => (
             <motion.div
               key={index}
-              className="group cursor-pointer"
+              className="group relative bg-card rounded-2xl overflow-hidden tech-border hover:shadow-glow transition-all duration-500 cursor-pointer"
               initial={{ opacity: 0, y: 50 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.8, delay: index * 0.2 }}
-              whileHover={{ y: -10 }}
+              transition={{ duration: 0.6, delay: index * 0.1 }}
+              whileHover={{ y: -8 }}
+              onClick={() => setSelectedProject(index)}
             >
-              <div className="bg-card rounded-2xl overflow-hidden tech-border hover:shadow-glow transition-all duration-300 h-full">
-                {/* Project Image */}
-                <div className="relative overflow-hidden pb-[56.25%]">
-                  <img
-                    src={project.image}
-                    alt={project.title}
-                    loading="lazy"
-                    className="absolute inset-0 w-full h-full transform transition-transform duration-300 group-hover:scale-105"
-                  />
-                  {/* <div className="absolute inset-0 bg-gradient-primary opacity-20"></div> */}
-                  {/* <motion.div
-                    className="absolute inset-0 bg-gradient-electric opacity-0 group-hover:opacity-30 transition-opacity duration-300"
-                    whileHover={{ scale: 1.1 }}
-                  /> */}
+              {/* Project Image */}
+              <div className="relative h-48 overflow-hidden">
+                <img
+                  src={p.image}
+                  alt={p.title}
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-card via-card/40 to-transparent"></div>
+                {/* Tags */}
+                <div className="absolute top-3 left-3 flex flex-wrap gap-2">
+                  {p.tags.map((tag) => (
+                    <span
+                      key={tag}
+                      className={`px-2.5 py-1 rounded-full text-xs font-semibold border backdrop-blur-sm ${tagColors[tag] || "text-muted-foreground border-border bg-secondary/80"}`}
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+              </div>
+
+              {/* Card Content */}
+              <div className="p-6">
+                <h3 className="text-xl font-bold text-primary mb-2 group-hover:text-gradient transition-all">
+                  {p.title}
+                </h3>
+                <p className="text-sm text-muted-foreground mb-4 line-clamp-2">
+                  {p.description}
+                </p>
+
+                {/* Tech icons */}
+                <div className="flex flex-wrap gap-1.5 mb-4">
+                  {p.technologies.slice(0, 4).map((tech, techIndex) => (
+                    <span
+                      key={techIndex}
+                      className="px-2 py-0.5 bg-secondary/80 rounded text-xs font-medium text-muted-foreground"
+                    >
+                      {tech}
+                    </span>
+                  ))}
+                  {p.technologies.length > 4 && (
+                    <span className="px-2 py-0.5 text-xs text-muted-foreground/60">
+                      +{p.technologies.length - 4} more
+                    </span>
+                  )}
                 </div>
 
-                {/* Project Content */}
-                <div className="p-6">
-                  <h3 className="text-[15px] lg:text-xl font-bold mb-3 text-foreground group-hover:text-primary transition-colors">
-                    {project.title}
-                  </h3>
-
-                  <p className="text-sm lg:text-[15px] text-muted-foreground text-justify mb-4 line-clamp-3">
-                    {project.description}
-                  </p>
-
-                  {/* Technologies */}
-                  <div className="flex flex-wrap gap-2 mb-6">
-                    {project.technologies.slice(0, 3).map((tech, techIndex) => (
-                      <span
-                        key={techIndex}
-                        className="px-2 py-1 bg-secondary rounded text-xs font-medium tech-border"
-                      >
-                        {tech}
-                      </span>
-                    ))}
-                    {project.technologies.length > 3 && (
-                      <span className="px-2 py-1 bg-primary/10 text-primary rounded text-xs font-medium">
-                        +{project.technologies.length - 3} more
-                      </span>
-                    )}
-                  </div>
-
-                  {/* Action Buttons */}
-                  <div className="flex items-center justify-between">
-                    <div className="flex gap-3">
-                      {project.githubUrl && (<Button
-                        variant="secondary"
-                        size="sm"
-                        className="tech-border hover:bg-primary/10"
-                        aria-label={`View ${project.title} source code on GitHub`}
-                        onClick={(e) => {
-                          e.stopPropagation();
-                          window.open(project.githubUrl, "_blank", "noopener,noreferrer");
-                        }}
-                      >
-                        <FaGithub className="" />
-                      </Button>
-                      )}
-
-                      {project.liveUrl && (
-                        <Button
-                          variant="secondary"
-                          size="sm"
-                          className="tech-border hover:bg-electric/10"
-                          aria-label={`View ${project.title} live demo`}
-                          onClick={(e) => {
-                            e.stopPropagation();
-                            window.open(project.liveUrl, "_blank", "noopener,noreferrer");
-                          }}
-                        >
-                          <FaExternalLinkAlt className="" />
-                        </Button>
-                      )}
-
-                    </div>
-
+                {/* Actions */}
+                <div className="flex items-center gap-2">
+                  {p.githubUrl && (
                     <Button
-                      variant="default"
+                      variant="ghost"
                       size="sm"
-                      className="bg-gradient-primary hover:shadow-glow"
-                      aria-label={`View details for ${project.title}`}
-                      onClick={() => setSelectedProject(index)}
+                      className="hover:bg-secondary"
+                      aria-label={`View ${p.title} source code on GitHub`}
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        window.open(p.githubUrl, "_blank", "noopener,noreferrer");
+                      }}
                     >
-                      View Details
+                      <FaGithub className="" />
                     </Button>
-                  </div>
+                  )}
+                  {p.liveUrl && (
+                    <Button
+                      variant="ghost"
+                      size="sm"
+                      className="hover:bg-secondary"
+                      aria-label={`View ${p.title} live demo`}
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        window.open(p.liveUrl, "_blank", "noopener,noreferrer");
+                      }}
+                    >
+                      <FaExternalLinkAlt className="" />
+                    </Button>
+                  )}
+                  <Button
+                    variant="default"
+                    size="sm"
+                    className="bg-gradient-primary hover:shadow-glow ml-auto"
+                    aria-label={`View details for ${p.title}`}
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      setSelectedProject(index);
+                    }}
+                  >
+                    View Details
+                  </Button>
                 </div>
               </div>
             </motion.div>
@@ -281,117 +161,149 @@ const Projects = () => {
 
         {/* Project Modal */}
         <AnimatePresence>
-          {selectedProject !== null && (
-            <motion.div
-              className="fixed inset-0 z-50 flex items-center justify-center p-4"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-            >
-              {/* Backdrop */}
-              <motion.div
-                className="absolute inset-0 bg-black/80 backdrop-blur-sm"
-                onClick={() => setSelectedProject(null)}
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-              />
-
-              {/* Modal Content */}
-              <motion.div
-                className="relative bg-card rounded-2xl p-8 max-w-4xl w-full max-h-[90vh] overflow-y-auto tech-border shadow-glow"
-                initial={{ scale: 0.9, y: 50 }}
-                animate={{ scale: 1, y: 0 }}
-                exit={{ scale: 0.9, y: 50 }}
-                transition={{ type: "spring", bounce: 0.3 }}
-              >
-                {/* Close Button */}
-                <button
-                  className="absolute top-4 right-4 p-2 hover:bg-secondary rounded-lg transition-colors"
-                  aria-label="Close project details modal"
-                  onClick={() => setSelectedProject(null)}
-                >
-                  <FaTimes className="text-xl" />
-                </button>
-
-                {/* Modal Content */}
-                <div className="space-y-6">
-                  <div>
-                    <h3 className="text-2xl font-bold text-gradient mb-4">
-                      {projects[selectedProject].title}
-                    </h3>
-                    <p className="text-muted-foreground leading-relaxed text-justify">
-                      {projects[selectedProject].longDescription}
-                    </p>
-                  </div>
-
-                  {/* Features */}
-                  {projects[selectedProject].features.length > 0 && (
-                    <div>
-                      <h4 className="text-xl font-semibold text-gradient-electric mb-4">
-                        Key Features
-                      </h4>
-                      <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-                        {projects[selectedProject].features.map((feature, featureIndex) => (
-                          <div key={featureIndex} className="flex items-start">
-                            <div className="w-2 h-2 bg-gradient-primary rounded-full mt-2 mr-3 flex-shrink-0"></div>
-                            <span className="text-muted-foreground">{feature}</span>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-                  )}
-
-                  {/* Technologies */}
-                  <div>
-                    <h4 className="text-xl font-semibold text-gradient mb-4">
-                      Technologies Used
-                    </h4>
-                    <div className="flex flex-wrap gap-2">
-                      {projects[selectedProject].technologies.map((tech, techIndex) => (
-                        <span
-                          key={techIndex}
-                          className="px-3 py-2 bg-secondary rounded-lg font-medium tech-border hover:shadow-electric transition-all duration-300"
-                        >
-                          {tech}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-
-                  {/* Action Buttons */}
-                  <div className="flex flex-col md:flex-row gap-3 md:gap-4 pt-4">
-                    {projects[selectedProject].githubUrl && (
-                      <Button
-                        className="bg-gradient-primary hover:shadow-glow w-full md:flex-1"
-                        aria-label={`View ${projects[selectedProject].title} source code on GitHub`}
-                        onClick={() => window.open(projects[selectedProject].githubUrl, "_blank", "noopener,noreferrer")}
-                      >
-                        <FaGithub className="mr-2" />
-                        View Source Code
-                      </Button>
-                    )}
-
-                    {projects[selectedProject].liveUrl && (
-                      <Button
-                        variant="outline"
-                        className="tech-border hover:bg-electric/10 w-full md:flex-1"
-                        aria-label={`View ${projects[selectedProject].title} live demo`}
-                        onClick={() => window.open(projects[selectedProject].liveUrl, "_blank", "noopener,noreferrer")}
-                      >
-                        <FaExternalLinkAlt className="mr-2" />
-                        Live Demo
-                      </Button>
-                    )}
-                  </div>
-                </div>
-              </motion.div>
-            </motion.div>
+          {selectedProject !== null && project && (
+            <ProjectModal project={project} onClose={() => setSelectedProject(null)} />
           )}
         </AnimatePresence>
       </div>
     </section>
   );
 };
+
+const ProjectModal = ({ project, onClose }: { project: Project; onClose: () => void }) => {
+  return (
+    <motion.div
+      className="fixed inset-0 z-50 flex items-center justify-center p-4"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+    >
+      {/* Backdrop */}
+      <motion.div
+        className="absolute inset-0 bg-black/80 backdrop-blur-sm"
+        onClick={onClose}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+      />
+
+      {/* Modal Content */}
+      <motion.div
+        className="relative bg-card rounded-2xl p-6 sm:p-8 max-w-4xl w-full max-h-[90vh] overflow-y-auto tech-border shadow-glow"
+        initial={{ scale: 0.9, y: 50 }}
+        animate={{ scale: 1, y: 0 }}
+        exit={{ scale: 0.9, y: 50 }}
+        transition={{ type: "spring", bounce: 0.3 }}
+      >
+        {/* Close Button */}
+        <button
+          className="absolute top-4 right-4 p-2 hover:bg-secondary rounded-lg transition-colors z-10"
+          aria-label="Close project details modal"
+          onClick={onClose}
+        >
+          <FaTimes className="text-xl" />
+        </button>
+
+        {/* Modal Content */}
+        <div className="space-y-6">
+          {/* Title + Tags */}
+          <div>
+            <div className="flex flex-wrap gap-2 mb-3">
+              {project.tags.map((tag) => (
+                <span
+                  key={tag}
+                  className={`px-2.5 py-1 rounded-full text-xs font-semibold border ${tagColors[tag] || "text-muted-foreground border-border bg-secondary"}`}
+                >
+                  {tag}
+                </span>
+              ))}
+            </div>
+            <h3 className="text-2xl font-bold text-gradient mb-3">
+              {project.title}
+            </h3>
+            <p className="text-muted-foreground leading-relaxed">
+              {project.longDescription}
+            </p>
+          </div>
+
+          {/* Problem → Build → Result Story */}
+          <div className="space-y-4">
+            <DetailSection title="The Problem" text={project.problem} />
+            <DetailSection title="What I Built" text={project.whatIBuilt} />
+            <DetailSection title="My Contribution" text={project.contribution} />
+            <DetailSection title="Challenges & Interesting Parts" text={project.challenges} />
+          </div>
+
+          {/* Features */}
+          {project.features.length > 0 && (
+            <div>
+              <h4 className="text-xl font-semibold text-gradient-electric mb-4">
+                Key Features
+              </h4>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                {project.features.map((feature, featureIndex) => (
+                  <div key={featureIndex} className="flex items-start">
+                    <div className="w-2 h-2 bg-gradient-primary rounded-full mt-2 mr-3 flex-shrink-0"></div>
+                    <span className="text-muted-foreground">{feature}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {/* Technologies */}
+          <div>
+            <h4 className="text-xl font-semibold text-gradient mb-4">
+              Technology Stack
+            </h4>
+            <div className="flex flex-wrap gap-2">
+              {project.technologies.map((tech, techIndex) => (
+                <span
+                  key={techIndex}
+                  className="px-3 py-2 bg-secondary rounded-lg font-medium tech-border hover:shadow-electric transition-all duration-300"
+                >
+                  {tech}
+                </span>
+              ))}
+            </div>
+          </div>
+
+          {/* Action Buttons */}
+          <div className="flex flex-col md:flex-row gap-3 md:gap-4 pt-4">
+            {project.githubUrl && (
+              <Button
+                className="bg-gradient-primary hover:shadow-glow w-full md:flex-1"
+                aria-label={`View ${project.title} source code on GitHub`}
+                onClick={() => window.open(project.githubUrl, "_blank", "noopener,noreferrer")}
+              >
+                <FaGithub className="mr-2" />
+                View Source Code
+              </Button>
+            )}
+
+            {project.liveUrl && (
+              <Button
+                variant="outline"
+                className="tech-border hover:bg-electric/10 w-full md:flex-1"
+                aria-label={`View ${project.title} live demo`}
+                onClick={() => window.open(project.liveUrl, "_blank", "noopener,noreferrer")}
+              >
+                <FaExternalLinkAlt className="mr-2" />
+                Live Demo
+              </Button>
+            )}
+          </div>
+        </div>
+      </motion.div>
+    </motion.div>
+  );
+};
+
+const DetailSection = ({ title, text }: { title: string; text: string }) => (
+  <div>
+    <h4 className="text-sm font-semibold text-electric uppercase tracking-wide mb-1">{title}</h4>
+    <p className="text-muted-foreground leading-relaxed text-sm">{text}</p>
+  </div>
+);
 
 export default Projects;

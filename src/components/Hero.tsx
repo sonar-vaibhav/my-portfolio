@@ -25,6 +25,13 @@ const Hero = () => {
     }
   };
 
+  const scrollToProjects = () => {
+    const element = document.getElementById("projects");
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   return (
     <section id="home" className="min-h-screen flex items-center justify-center pt-16 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto w-full">
@@ -36,7 +43,7 @@ const Hero = () => {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <p className="text-xl sm:3xl lg:text-4xl font-light mb-2">
+            <p className="text-xl sm:text-2xl lg:text-3xl font-light mb-2 text-muted-foreground">
               Hello, I'm
             </p>
             <h1 className="text-4xl sm:text-5xl lg:text-7xl mt-4 mb-6 text-gradient font-bitcount font-extralight">
@@ -44,12 +51,12 @@ const Hero = () => {
             </h1>
 
             <motion.p
-              className="text-xl sm:4xl text-muted-foreground mb-8 text-justify"
+              className="text-lg sm:text-xl lg:text-2xl text-muted-foreground mb-8 lg:text-left max-w-xl"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.4 }}
             >
-              I build full-stack web applications — from AI-powered Chrome extensions to rental accommodation platforms. Based in PCMC, Pune and currently pursuing BE in Computer Engineering at Dr. D. Y. Patil Institute of Technology (DPU), Pimpri, I work with React, Node.js, and the MERN stack to turn real-world requirements into clean, maintainable code.
+              I build modern web applications, experiment with new technologies, and turn ideas into things people can actually use.
             </motion.p>
 
             <motion.div
@@ -154,6 +161,34 @@ const Hero = () => {
               {/* Action Buttons Row */}
               <div className="flex flex-wrap gap-4 justify-center lg:justify-start">
                 <Button
+                  size="lg"
+                  className="bg-gradient-electric hover:shadow-purple transition-all duration-300 relative group"
+                  onClick={scrollToContact}
+                  aria-label="Scroll to contact section"
+                >
+                  Let's Build Something
+                  <span className="ml-1 group-hover:translate-x-1 inline-block transition-transform">→</span>
+                  <div className="absolute -top-12 left-1/2 transform -translate-x-1/2 bg-black/90 text-white px-3 py-2 rounded-lg text-sm font-medium opacity-0 group-hover:opacity-100 transition-all duration-300 pointer-events-none whitespace-nowrap z-50">
+                    <span className="text-electric">💬</span> Let's start a conversation
+                    <div className="absolute top-full left-1/2 transform -translate-x-1/2 w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent border-t-black/90"></div>
+                  </div>
+                </Button>
+
+                <Button
+                  variant="outline"
+                  size="lg"
+                  className="tech-border hover:bg-primary/10 transition-all duration-300 group relative"
+                  onClick={scrollToProjects}
+                  aria-label="Scroll to projects section"
+                >
+                  View My Work
+                  <div className="absolute -top-12 left-1/2 transform -translate-x-1/2 bg-black/90 text-white px-3 py-2 rounded-lg text-sm font-medium opacity-0 group-hover:opacity-100 transition-all duration-300 pointer-events-none whitespace-nowrap z-50">
+                    <span className="text-electric">🚀</span> See what I've built
+                    <div className="absolute top-full left-1/2 transform -translate-x-1/2 w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent border-t-black/90"></div>
+                  </div>
+                </Button>
+
+                <Button
                   variant="outline"
                   size="lg"
                   className="tech-border hover:bg-purple/10 transition-all duration-300 group relative"
@@ -162,23 +197,8 @@ const Hero = () => {
                 >
                   <FaFileDownload className="mr-2 group-hover:animate-pulse" />
                   Resume
-                  {/* Cool Tooltip */}
                   <div className="absolute -top-12 left-1/2 transform -translate-x-1/2 bg-black/90 text-white px-3 py-2 rounded-lg text-sm font-medium opacity-0 group-hover:opacity-100 transition-all duration-300 pointer-events-none whitespace-nowrap z-50">
                     <span className="text-electric">📄</span> View my resume
-                    <div className="absolute top-full left-1/2 transform -translate-x-1/2 w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent border-t-black/90"></div>
-                  </div>
-                </Button>
-
-                <Button
-                  size="lg"
-                  className="bg-gradient-electric hover:shadow-purple transition-all duration-300 relative"
-                  onClick={scrollToContact}
-                  aria-label="Scroll to contact section"
-                >
-                  Contact Me
-                  {/* Cool Tooltip */}
-                  <div className="absolute -top-12 left-1/2 transform -translate-x-1/2 bg-black/90 text-white px-3 py-2 rounded-lg text-sm font-medium opacity-0 group-hover:opacity-100 transition-all duration-300 pointer-events-none whitespace-nowrap z-50">
-                    <span className="text-electric">💬</span> Let's start a conversation
                     <div className="absolute top-full left-1/2 transform -translate-x-1/2 w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent border-t-black/90"></div>
                   </div>
                 </Button>

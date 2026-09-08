@@ -135,11 +135,12 @@ const Contact = () => {
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
         >
+          <p className="text-sm font-medium text-electric uppercase tracking-widest mb-2">Have an idea?</p>
           <h2 className="text-4xl font-bold mb-4">
-            Let's <span className="text-gradient">Connect</span>
+            Let's Build <span className="text-gradient">Something</span>
           </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto text-justify">
-            Got a project in mind or just want to say hi? I’d love to hear from you.
+          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+            Got an interesting idea, project, collaboration, or simply want to talk tech? I'm always open to building something interesting.
           </p>
         </motion.div>
 
@@ -153,12 +154,11 @@ const Contact = () => {
           >
             <div className="space-y-6">
               <h3 className="text-2xl font-semibold text-gradient-electric">
-                Get in Touch
+                Reach Out
               </h3>
 
-              <p className="text-lg text-muted-foreground leading-relaxed text-justify">
-                I’m always open to new opportunities, ideas, and collaborations.
-                Feel free to reach out — let’s build something amazing together.
+              <p className="text-lg text-muted-foreground leading-relaxed">
+                Whether it’s a project, a collaboration, or just a tech conversation — feel free to reach out.
               </p>
             </div>
 
@@ -396,7 +396,7 @@ const Contact = () => {
           transition={{ duration: 0.6, delay: 1 }}
         >
           <p className="text-sm text-muted-foreground mt-2">
-            Made with <span className="text-red-500">💖</span> by Vaibhav Sonar
+            Built, not just studied. <span className="text-red-500">💖</span> by Vaibhav Sonar
           </p>
         </motion.footer>
       </div>
