@@ -159,17 +159,15 @@ const Projects = () => {
   }, [selectedProject]);
 
   return (
-    <section id="projects" className="min-h-screen py-14 lg:py-20 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-7xl mx-auto" ref={ref}>
+    <section id="projects" className="border-t border-border px-5 py-24 sm:px-8 lg:py-32">
+      <div className="mx-auto max-w-7xl" ref={ref}>
         <motion.div
           className="text-center mb-16"
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
         >
-          <h2 className="text-4xl font-bold mb-4">
-            Featured <span className="text-gradient">Projects</span>
-          </h2>
+          <div className="mb-12 max-w-2xl"><p className="font-mono text-xs uppercase tracking-[0.24em] text-primary">03 / Selected work</p><h2 className="mt-4 text-4xl font-semibold sm:text-5xl">Things I&apos;ve built.</h2></div>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto text-justify">
             Here’s what I’ve built so far — a collection of projects that showcase my journey across diverse tech stacks. I’m constantly learning and creating, so more projects will be added soon.
           </p>
@@ -186,7 +184,7 @@ const Projects = () => {
               transition={{ duration: 0.8, delay: index * 0.2 }}
               whileHover={{ y: -10 }}
             >
-              <div className="bg-card rounded-2xl overflow-hidden tech-border hover:shadow-glow transition-all duration-300 h-full">
+              <div className="h-full overflow-hidden border border-border bg-card transition-all duration-300 hover:-translate-y-1 hover:border-primary/50">
                 {/* Project Image */}
                 <div className="relative overflow-hidden pb-[56.25%]">
                   <img

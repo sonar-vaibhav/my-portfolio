@@ -1,5 +1,14 @@
 import { motion } from "framer-motion";
-import { useState, useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
+
+const navItems = [
+  { id: "home", label: "Home" },
+  { id: "about", label: "About" },
+  { id: "skills", label: "Skills" },
+  { id: "experience", label: "Experience" },
+  { id: "projects", label: "Projects" },
+  { id: "contact", label: "Contact" },
+];
 
 const Navigation = () => {
   const [activeSection, setActiveSection] = useState("home");
@@ -7,163 +16,51 @@ const Navigation = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const navRef = useRef<HTMLElement | null>(null);
 
-  const navItems = [
-    { id: "home", label: "Home" },
-    { id: "about", label: "About" },
-    { id: "skills", label: "Skills" },
-    { id: "experience", label: "Experience" },
-    { id: "projects", label: "Projects" },
-    { id: "contact", label: "Contact" },
-  ];
-
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
-      
-      // Update active section based on scroll position
-      const sections = navItems.map(item => document.getElementById(item.id));
-      const scrollPosition = window.scrollY + 100;
-      
-      for (let i = sections.length - 1; i >= 0; i--) {
-        const section = sections[i];
-        if (section && section.offsetTop <= scrollPosition) {
-          setActiveSection(navItems[i].id);
-          break;
-        }
-      }
+      setIsScrolled(window.scrollY > 20);
+      const position = window.scrollY + 140;
+      const current = [...navItems].reverse().find(({ id }) => {
+        const section = document.getElementById(id);
+        return section && section.offsetTop <= position;
+      });
+      if (current) setActiveSection(current.id);
     };
-
-    window.addEventListener("scroll", handleScroll);
+    handleScroll();
+    window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const scrollToSection = (sectionId: string) => {
-    const target = document.getElementById(sectionId);
-    if (!target) return;
-
-    const performScroll = () => {
-      const navEl = navRef.current;
-      const offset = (navEl?.offsetHeight ?? 64) + 8;
-      const rect = target.getBoundingClientRect();
-      const targetY = window.scrollY + rect.top - offset;
-
-      // Temporarily disable CSS smooth scroll to prevent double-smoothing conflicts
-      const htmlEl = document.documentElement as HTMLElement;
-      const previousBehavior = htmlEl.style.scrollBehavior;
-      htmlEl.style.scrollBehavior = "auto";
-      window.scrollTo({ top: Math.max(0, targetY), behavior: "smooth" });
-      // Restore after the scroll kicks in
-      setTimeout(() => {
-        htmlEl.style.scrollBehavior = previousBehavior;
-      }, 400);
-    };
-
-    const isMobile = window.innerWidth < 768;
-    if (isMobile && isMenuOpen) {
-      setIsMenuOpen(false);
-      // Wait for menu collapse/layout to settle before measuring
-      setTimeout(performScroll, 300);
-    } else {
-      performScroll();
-    }
+  const scrollToSection = (id: string) => {
+    document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+    setIsMenuOpen(false);
   };
 
   return (
     <motion.nav
-      className={`site-nav fixed top-0 left-0 right-0 z-[100] transition-all duration-300 ${
-        isScrolled
-          ? "bg-background/90 backdrop-blur-lg border-b border-primary/20 shadow-glow"
-          : "bg-transparent"
-      }`}
-      initial={{ y: -100 }}
+      ref={(element) => (navRef.current = element)}
+      className={`site-nav fixed inset-x-0 top-0 z-[100] transition-all duration-300 ${isScrolled ? "border-b border-border bg-background/90 backdrop-blur-md" : "bg-transparent"}`}
+      initial={{ y: -80 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.5 }}
-      ref={(el) => (navRef.current = el)}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-12 md:h-16">
-          {/* Logo */}
-          <motion.button
-            className="text-3xl font-bold text-gradient cursor-pointer font-irish"
-            whileHover={{ scale: 1.05 }}
-            onClick={() => scrollToSection("home")}
-            aria-label="Navigate to home section"
-          >
-            &nbsp;VS
-          </motion.button>
-
-          {/* Navigation Links */}
-          <div className="hidden md:flex items-center space-x-8">
-            {navItems.map((item) => (
-              <motion.button
-                key={item.id}
-                onClick={() => scrollToSection(item.id)}
-                aria-label={`Navigate to ${item.label} section`}
-                className={`relative px-3 py-2 text-sm font-medium transition-colors duration-200 ${
-                  activeSection === item.id
-                    ? "text-primary"
-                    : "text-foreground hover:text-primary"
-                }`}
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                {item.label}
-                {activeSection === item.id && (
-                  <motion.div
-                    className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-primary"
-                    layoutId="activeTab"
-                    transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
-                  />
-                )}
-              </motion.button>
-            ))}
-          </div>
-
-          {/* Mobile menu button */}
-          <div className="md:hidden pointer-events-auto">
-            <motion.button
-              className="p-2 rounded-lg hover:bg-secondary touch-manipulation"
-              whileTap={{ scale: 0.95 }}
-              aria-label="Toggle menu"
-              aria-expanded={isMenuOpen}
-              onClick={() => setIsMenuOpen(prev => !prev)}
-            >
-              {isMenuOpen ? (
-                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                </svg>
-              ) : (
-                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-                </svg>
-              )}
-            </motion.button>
-          </div>
+      <div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-5 sm:px-8">
+        <button onClick={() => scrollToSection("home")} className="font-mono text-sm font-semibold tracking-[0.2em] text-foreground" aria-label="Go to home">
+          VS<span className="text-primary">.</span>
+        </button>
+        <div className="hidden items-center gap-7 md:flex">
+          {navItems.map((item) => (
+            <button key={item.id} onClick={() => scrollToSection(item.id)} className={`relative py-2 text-sm transition-colors ${activeSection === item.id ? "text-primary" : "text-muted-foreground hover:text-foreground"}`}>
+              {item.label}
+              {activeSection === item.id && <motion.span layoutId="active-nav" className="absolute -bottom-1 left-0 right-0 h-px bg-accent" />}
+            </button>
+          ))}
         </div>
-
-        {/* Mobile dropdown */}
-        <motion.div
-          className="md:hidden px-4 pb-2 pointer-events-auto relative z-[100]"
-          initial={false}
-          animate={{ height: isMenuOpen ? "auto" : 0, opacity: isMenuOpen ? 1 : 0 }}
-          style={{ overflow: "hidden" }}
-        >
-          <div className="mt-2 space-y-2 bg-background/90 backdrop-blur-md rounded-lg border border-primary/20 p-3">
-            {navItems.map((item) => (
-              <button
-                key={item.id}
-                onClick={() => scrollToSection(item.id)}
-                aria-label={`Navigate to ${item.label} section`}
-                className={`w-full text-left px-3 py-2 rounded-md transition-colors touch-manipulation ${
-                  activeSection === item.id ? "bg-primary/10 text-primary" : "text-foreground hover:bg-secondary"
-                }`}
-              >
-                {item.label}
-              </button>
-            ))}
-          </div>
-        </motion.div>
+        <button className="rounded-sm border border-border px-3 py-2 text-sm text-muted-foreground md:hidden" onClick={() => setIsMenuOpen((open) => !open)} aria-expanded={isMenuOpen} aria-label="Toggle navigation">
+          {isMenuOpen ? "Close" : "Menu"}
+        </button>
       </div>
+      {isMenuOpen && <div className="border-t border-border bg-background px-5 py-4 md:hidden"><div className="flex flex-col gap-1">{navItems.map((item) => <button key={item.id} onClick={() => scrollToSection(item.id)} className="px-2 py-3 text-left text-sm text-muted-foreground hover:text-primary">{item.label}</button>)}</div></div>}
     </motion.nav>
   );
 };

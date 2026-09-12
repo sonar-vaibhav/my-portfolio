@@ -1,104 +1,22 @@
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
-import SharedProfileOrbit from "./SharedProfileOrbit";
+
+const educationData = [
+  { year: "2024 — 2027", degree: "Bachelor of Engineering", field: "Computer Engineering", institution: "Dr. D. Y. Patil Institute of Technology, Pimpri, Pune", result: "CGPA 9.33" },
+  { year: "2021 — 2024", degree: "Diploma", field: "Computer Engineering", institution: "SSVPS B.S. Deore Polytechnic, Dhule", result: "92.86%" },
+];
 
 const About = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
-
-  const educationData = [
-    {
-      year: "2024 - 2027",
-      degree: "Bachelor of Engineering",
-      field: "Computer Engineering",
-      institution: "Dr. D. Y. Patil Institute of Technology, Pimpri, Pune",
-      description: "CGPA : 9.33"
-    },
-    {
-      year: "2021 - 2024",
-      degree: "Diploma",
-      field: "Computer Engineering",
-      institution: "SSVPS B.S. Deore Polytechnic, Dhule",
-      description: "Percentage : 92.86%"
-    }
-  ];
-
   return (
-    <section id="about" className="min-h-screen py-14 lg:py-20 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-7xl mx-auto" ref={ref}>
-        <motion.div
-          className="text-center mb-16"
-          initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
-        >
-          <h2 className="text-4xl font-bold mb-4">
-            About <span className="text-gradient">Me</span>
-          </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Passionate developer with a love for creating innovative solutions
-          </p>
+    <section id="about" className="border-t border-border px-5 py-24 sm:px-8 lg:py-32">
+      <div ref={ref} className="mx-auto max-w-7xl">
+        <motion.div initial={{ opacity: 0, y: 18 }} animate={isInView ? { opacity: 1, y: 0 } : {}} className="grid gap-14 lg:grid-cols-[0.7fr_1.3fr]">
+          <div><p className="font-mono text-xs uppercase tracking-[0.24em] text-primary">01 / About</p><h2 className="mt-5 max-w-sm text-4xl font-semibold leading-tight sm:text-5xl">A practical developer with a curious mind.</h2></div>
+          <div><p className="max-w-2xl text-xl leading-8 text-foreground">I care about the details that make software feel simple: clear structure, useful interfaces, and technology that serves people rather than distracting them.</p><p className="mt-6 max-w-2xl leading-7 text-muted-foreground">I&apos;m a Computer Engineering student with hands-on experience across React, Node.js, PHP, MongoDB, and AI-powered products. From university procurement workflows to tools that live inside Gmail, I build things that are meant to be used.</p><div className="mt-16 grid gap-8 border-t border-border pt-6 sm:grid-cols-2">{educationData.map((edu) => <div key={edu.year}><p className="font-mono text-xs text-primary">{edu.year}</p><h3 className="mt-3 text-lg font-medium">{edu.degree}</h3><p className="mt-1 text-sm text-muted-foreground">{edu.field}</p><p className="mt-4 text-sm leading-6 text-muted-foreground">{edu.institution}</p><p className="mt-3 text-sm font-medium text-accent">{edu.result}</p></div>)}</div></div>
         </motion.div>
-
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
-          {/* Left side - About Me Description (visible on mobile too) */}
-          <motion.div
-            className="flex justify-center lg:justify-start order-2 lg:order-1"
-            initial={{ opacity: 0, x: -50 }}
-            animate={isInView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.8, delay: 0.2 }}
-          >
-            {/* About Me Description */}
-            <div className="">
-              <h3 className="text-2xl font-semibold text-gradient-electric pb-4">Who I Am</h3>
-              <p className="text-lg text-muted-foreground leading-relaxed text-justify">
-                I'm a Computer Engineering student at Dr. D. Y. Patil Institute of Technology with hands-on experience across the full stack. My projects range from an AI Chrome extension (MailCraft) used inside Gmail to a procurement system built for university operations.
-              </p>
-              <p className="text-lg text-muted-foreground leading-relaxed text-justify">
-                I work with React, Node.js, PHP, MongoDB, and more — building things that actually get used. Whether it's a rental platform serving students or a finance mentor powered by Gemini AI, I focus on practical solutions over flashy tech. <a href="/projects" className="text-electric hover:underline">See my recent projects</a>.
-              </p>
-            </div>
-          </motion.div>
-
-          {/* Right side - About content and education timeline */}
-          <motion.div
-            className="space-y-8 order-2 lg:order-2"
-            initial={{ opacity: 0, x: 50 }}
-            animate={isInView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.8, delay: 0.4 }}
-          >
-
-            {/* Education Timeline */}
-            <div>
-              <h3 className="text-2xl font-semibold text-gradient mb-6">Education</h3>
-              <div className="space-y-6">
-                {educationData.map((edu, index) => (
-                  <motion.div
-                    key={index}
-                    className="relative pl-8 pb-6 border-l-2 border-primary/30 last:border-l-0 last:pb-0"
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={isInView ? { opacity: 1, y: 0 } : {}}
-                    transition={{ duration: 0.6, delay: 0.6 + index * 0.2 }}
-                  >
-                    {/* Timeline dot */}
-                    <div className="absolute left-[-9px] top-0 w-4 h-4 bg-gradient-primary rounded-full shadow-glow"></div>
-
-                    <div className="bg-card rounded-xl p-6 tech-border hover:shadow-glow transition-all duration-300">
-                      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-2">
-                        <h4 className="text-xl font-semibold text-primary">{edu.degree}</h4>
-                        <span className="text-sm text-electric font-medium">{edu.year}</span>
-                      </div>
-                      <p className="text-lg text-purple mb-1">{edu.field}</p>
-                      <p className="text-muted-foreground mb-3 text-sm">{edu.institution}</p>
-                      <p className="text-sm text-muted-foreground">{edu.description}</p>
-                    </div>
-                  </motion.div>
-                ))}
-              </div>
-            </div>
-          </motion.div>
-        </div>
       </div>
     </section>
   );
