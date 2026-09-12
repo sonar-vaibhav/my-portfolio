@@ -226,49 +226,6 @@
   }
 }
 
-@layer components {
-  .solar-system { isolation: isolate; }
-  .orbit {
-    position: absolute;
-    inset: 50%;
-    border: 1px solid hsl(var(--border) / 0.9);
-    border-radius: 9999px;
-    transform: translate(-50%, -50%);
-    animation: orbit-drift 32s linear infinite;
-  }
-  .orbit::after {
-    content: "";
-    position: absolute;
-    top: -2px;
-    left: 50%;
-    width: 4px;
-    height: 4px;
-    border-radius: 9999px;
-    background: hsl(var(--primary));
-    box-shadow: 0 0 14px hsl(var(--primary) / 0.8);
-  }
-  .orbit-one { width: 38%; height: 38%; animation-duration: 22s; }
-  .orbit-two { width: 66%; height: 66%; animation-duration: 30s; animation-direction: reverse; }
-  .orbit-three { width: 94%; height: 94%; animation-duration: 42s; }
-  .solar-core { position: absolute; top: 50%; left: 50%; width: 31%; aspect-ratio: 1; transform: translate(-50%, -50%); border: 1px solid hsl(var(--primary) / 0.6); border-radius: 9999px; background: radial-gradient(circle, hsl(var(--primary) / 0.18), hsl(var(--card)) 68%); box-shadow: 0 0 60px hsl(var(--primary) / 0.12); display: grid; place-items: center; }
-  .solar-core-inner { display: grid; place-items: center; text-align: center; }
-  .planet { position: absolute; z-index: 2; display: grid; place-items: center; gap: 3px; transform: translate(-50%, -50%); transition: transform 220ms ease; }
-  .planet:hover, .planet-active { transform: translate(-50%, -50%) scale(1.12); }
-  .planet-icon { display: grid; width: 42px; height: 42px; place-items: center; border: 1px solid hsl(var(--border)); border-radius: 9999px; background: hsl(var(--card)); font-size: 21px; box-shadow: 0 8px 24px hsl(var(--background) / 0.3); transition: border-color 220ms ease, box-shadow 220ms ease; }
-  .planet:hover .planet-icon, .planet-active .planet-icon { border-color: hsl(var(--primary) / 0.8); box-shadow: 0 0 24px hsl(var(--primary) / 0.22); }
-  .planet-label { color: hsl(var(--muted-foreground)); font-family: monospace; font-size: 9px; letter-spacing: 0.04em; white-space: nowrap; }
-  .planet-react { top: 30%; left: 50%; }
-  .planet-typescript { top: 70%; left: 50%; }
-  .planet-next { top: 17%; left: 70%; }
-  .planet-node { top: 83%; left: 30%; }
-  .planet-tailwind { top: 50%; left: 3%; }
-  .planet-supabase { top: 13%; left: 27%; }
-  .planet-github { top: 87%; left: 73%; }
-  @keyframes orbit-drift { from { transform: translate(-50%, -50%) rotate(0deg); } to { transform: translate(-50%, -50%) rotate(360deg); } }
-  @media (prefers-reduced-motion: reduce) { .orbit { animation: none; } }
-  @media (max-width: 640px) { .planet-icon { width: 36px; height: 36px; font-size: 18px; } .planet-label { font-size: 8px; } }
-}
-
 @layer utilities {
   /* Custom animations */
   @keyframes float {
