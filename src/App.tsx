@@ -11,8 +11,6 @@ import ExperiencePage from "./pages/ExperiencePage";
 import ProjectsPage from "./pages/ProjectsPage";
 import ContactPage from "./pages/ContactPage";
 import NotFound from "./pages/NotFound";
-import { Pointer } from "./components/magicui/pointer";
-import BackgroundPattern from "./components/BackgroundPattern";
 import { Analytics } from "@vercel/analytics/react"
 
 const queryClient = new QueryClient();
@@ -21,8 +19,6 @@ const App = () => (
   <HelmetProvider>
     <QueryClientProvider client={queryClient}>
       <TooltipProvider>
-        <BackgroundPattern />
-        <Pointer />
         <Toaster />
         <Sonner />
         <Analytics />
